@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<span> Preço da pizza e sabor, respectivamente:</span>    
+<input type="text" id="preco_pizza" />
+<input type="text" id="sabor_pizza" /> <br>
+<span> Quantidade de amigos:</span>
+<input type="text" id="qtd_amigos" />
+<button onclick="calcular()">Ver valor por amigo</button>
+<div id="div_exibir"></div>
+
+</body>
+</html>
+<script>
+    function calcular() {
+        let preco = Number(preco_pizza.value)
+        let sabor = sabor_pizza.value
+        let qtd = Number(qtd_amigos.value)
+        let vpa = (preco * 1.1/qtd)
+        let mensagem = ` Cada amigo vai colaborar com R$ ${vpa.toFixed(2)} para pagar a pizza de ${sabor}.`
+        div_exibir.innerHTML = mensagem
+    }
+
+</script>

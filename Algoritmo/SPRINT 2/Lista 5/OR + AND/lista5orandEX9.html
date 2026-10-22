@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Acesso à Academia 24 Horas</h2>
+
+    Qual o seu plano? <br>
+    <select id="select_plano">
+        <option value="1">Premium</option>
+        <option value="2">Básico</option>
+    </select> <br>
+
+    Informe a hora atual: <br>
+    <label for="input_horat"></label>
+    <input type="text" id="input_horat"> <br>
+
+    Seu check-in biométrico foi validado?<br>
+    <select id="select_check">
+        <option value="1">Sim</option>
+        <option value="2">Não</option>
+    </select> <br>
+
+    <button onclick="liberar()">Liberar catraca</button>
+
+</body>
+</html>
+<script>
+    function liberar(){
+        let plano = select_plano.value
+        let check = select_check.value
+        let horat = Number(input_horat.value)
+        // Rever para simplificar código  
+        if(check == 1){
+            if(horat >= 6 && horat <= 22 && (plano == 1 || plano == 2)){        
+                alert(`Acesso liberado`)
+            } else {
+                alert(`Acesso negado`)
+            }
+        } else{
+           alert(`Acesso negado`) 
+        }
+    }
+</script>

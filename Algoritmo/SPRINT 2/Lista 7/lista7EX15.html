@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>É tri/penta!</h2>
+    Informe um intervalo(começo e fim, respectivamente) <br>
+    Começo
+    <input type="text" id="ipt_com"> <br>
+    Fim
+    <input type="text" id="ipt_fim"> <br>
+    <button onclick="tricincar()">Curto 3 e 5!</button>
+    <div id="div_mensagem"></div>
+    
+</body>
+</html>
+<script>
+    function tricincar(){
+        let contador = Number(ipt_com.value) ;
+        let fim = Number(ipt_fim.value);
+        let mensagem = '';
+
+        while(contador <= fim){
+
+            if(contador % 3 == 0 && contador % 5 == 0){
+                mensagem += `É TRI!É PENTA!<br>`
+            } else if(contador % 5 == 0){
+                mensagem += `É PENTA! <br>`
+            } else if(contador % 3 == 0){
+                mensagem += `É TRI! <br>`
+            } else{
+                mensagem += `${contador} <br>`
+            }
+            contador++;
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

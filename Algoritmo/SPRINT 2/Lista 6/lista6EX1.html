@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Validações de Campos com Métodos de String (texto)</h2>
+    Digite uma frase <br>
+    <label for="input_frase"></label>
+    <input type="text" id="input_frase"> <br>
+
+    <button onclick="analisar()">Analisar frase</button>
+    <div id="div_exibir"></div>
+    
+</body>
+</html>
+<script>
+    function analisar(){
+        let frase = input_frase.value;
+        let tamanho = frase.length;
+
+        if(tamanho >= 10){
+            div_exibir.innerHTML = `Tamanho da frase:${tamanho} <br> Frase longa!`
+        } else{
+            div_exibir.innerHTML = `Tamanho da frase:${tamanho}<br> Frase curta!`
+        }
+        
+    }
+</script>

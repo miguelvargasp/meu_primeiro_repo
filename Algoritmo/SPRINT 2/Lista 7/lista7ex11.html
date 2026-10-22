@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Tabuada Colorida</h2>
+    Escolha a tabuada:<br>
+    <select id="select_tabuada">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+    </select> <br>
+    Até qual número a tabuada deve ir?<br>
+    <input type="text" id="ipt_limite"> <br>
+    <button onclick="ver()">Ver Tabuada</button>
+    <div id="div_mensagem"></div>
+</body>
+
+<script>
+    function ver() {
+        let tabuada = Number(select_tabuada.value)
+        let limite = Number(ipt_limite.value)
+        let multiplicador = 1
+        let mensagem = ''
+
+       
+        while (multiplicador <= limite) {
+            let resultado = tabuada * multiplicador
+
+            if (multiplicador % 2 == 0) {
+                mensagem += `<span style="color: blue">${tabuada} x ${multiplicador} = ${resultado}</span><br>`
+            } else {
+                    mensagem += `<span style="color: red">${tabuada} x ${multiplicador} = ${resultado}</span><br>`
+                }
+
+        multiplicador++
+        }
+
+            div_mensagem.innerHTML = mensagem
+        
+    }
+</script>

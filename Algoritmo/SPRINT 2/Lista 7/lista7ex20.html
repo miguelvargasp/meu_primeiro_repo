@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Soma dos Pares</h2>
+    Informe um número entre 10 e 500:<br>
+    <input type="text" id="ipt_numero">
+    <button onclick="somar()">Somar Pares</button>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+<script>
+    function somar(){
+        let numero = Number(ipt_numero.value)
+        let pares = 1;
+        let soma = 0;
+        let mensagem = '';
+        
+
+        if(numero <10 || numero > 500){
+            alert(`Insira um número válido`)
+        } else{
+            while(pares <= numero){
+            if(pares % 2 == 0){
+                mensagem += `${pares} <br>`
+                soma += pares 
+            }
+            pares++
+            }
+            mensagem += `<br> Soma dos pares: ${soma}`
+            div_mensagem.innerHTML = mensagem
+
+        }
+
+
+
+    }
+</script>

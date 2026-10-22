@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Meta de Economia: Você Está no Caminho Certo?</h2>
+    <span><b>Qual é a sua meta de economia?</b></span>
+    <input type="text" id="input_meta"/> <br>
+    <span><b>Quanto tem guardado?</b></span>
+    <input type="text" id="input_guar"/> <br>
+    <button onclick="analisar()">Analisar economia</button>
+    <div id="div_exibir"></div>
+
+
+</body>
+</html>
+<script>s
+    function analisar(){
+        let meta = Number(input_meta.value)
+        let guardado = Number(input_guar.value)
+        let metfal = (meta - guardado)
+        let metalc = (guardado - meta)
+        
+        if(metalc == 0 ){
+            div_exibir.innerHTML = `Parabéns, meta alcançada!`
+        }
+        else if(metalc > 0){
+            div_exibir.innerHTML = `Meta ultrapassada em ${metalc}`
+        }
+        else{
+            div_exibir.innerHTML = `Força! Ainda em busca da meta! Falta ${metfal}`
+        }
+    }
+</script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Acesso à Área VIP do Evento</h2>
+
+    Informe a sua idade: <br>
+    <label for="input_idade"></label>
+    <input type="text" id="input_idade"> <br>
+
+    Possui ingresso VIP? <br>
+    <select id="select_invip">
+        <option value="1">Sim</option>
+        <option value="2">Não</option>
+    </select> <br>
+
+    Possui convite inicial? <br>
+    <select id="select_convi">
+        <option value="1">Sim</option>
+        <option value="2">Não</option>
+    </select> <br>
+
+    <button onclick="liberar()">Liberar Acesso</button>
+    <div id="div_mensagem"></div>
+
+
+
+</body>
+</html>
+<script>
+    function liberar(){
+        let idade = Number(input_idade.value)
+        let ingresso =  select_invip.value
+        let convite = select_convi.value
+        
+        if(idade >= 18 && (ingresso == 1 || convite == 1)){
+            alert(`Acesso liberado à área VIP`)
+        } else{
+            alert(`Acesso negado`)
+        }
+    }
+</script>

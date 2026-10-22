@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Resto da Divisão por 5</h2>
+    <span>Informe um número</span>
+    <input type="text" id="input_num">
+    <button onclick="restar()">Múltiplos de 5</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+<script>
+    function restar(){
+        let numero = Number(input_num.value)
+        let resto5 = numero % 5
+        if(numero < 0){
+            alert(`Digite um número maior que zero`)
+        }
+        if(resto5 == 0){
+            div_exibir.innerHTML = `Perfeito, esse número é múltiplo de cinco`
+        }
+        else if(resto5 == 1){
+            div_exibir.innerHTML = `Vich, sobrou um`
+        }
+        else if(resto5 == 2){
+            div_exibir.innerHTML = `Para esse o resto é dois`
+        }
+        else if(resto5 == 3){
+            div_exibir.innerHTML = `Com mais dois daria certo`
+        }
+        else{
+            div_exibir.innerHTML = `Só faltou 1 para ser múltiplo de 5`
+        }
+        
+    }
+</script>

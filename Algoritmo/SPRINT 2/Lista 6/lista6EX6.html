@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Observador de Índices</h2>
+
+    Informe uma frase: <br>
+    <label for="input_frase"></label>
+    <input type="text" oninput="exibir()" id="input_frase"> <br>
+
+
+    Qual número de letra deseja ver? (por exemplo, 3ª letra, 5ª letra) <br>
+    <input type="text" id="input_numero"> <br>
+    <div id="div_exibir"></div>
+
+</body>
+</html>
+<script>
+    function exibir(){
+        let frase = input_frase.value;
+        let tam = frase.length;
+        let ultpos = tam - 1
+        let numero = Number(input_numero.value)
+        let numpos = (numero - 1)
+        let letra1 = frase[0]
+        let letran = frase[numpos]
+        let ultlet = frase[ultpos]
+
+        div_exibir.innerHTML = `  A primeira letra é: ${letra1} <br>
+        A ${numero}ª letra é: ${letran} <br>
+
+    A última letra é: ${ultlet}`
+
+    }
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Viva o 7!</h2>
+    Informe um número entre 0 e 200:<br>
+    <input type="text" id="ipt_numero"> <br>
+    
+    <button onclick="viver()">Viva o 7</button>
+    <div id="div_mensagem"></div> 
+</body>
+</html>
+<script>
+    function viver(){
+        let numero = Number(ipt_numero.value)
+        let contador = 0;
+        let mensagem = '';
+
+        while(contador <= numero){
+            if(contador % 7 == 0){
+                mensagem += `${contador} <br>`
+                
+            }
+        contador++  
+        }
+        
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Contagem dos Múltiplos</h2>
+    Informe um número positivo:<br>
+    <input type="text" id="ipt_numero1"> <br>
+    Informe um número positivo entre 1 e o número anterior:<br>
+    <input type="text" id="ipt_numero2"> <br>
+    <button onclick="somar()">Somar Números</button>
+    <div id="div_mensagem"></div> 
+</body>
+</html>
+<script>
+    function somar(){
+        let numero1 = Number(ipt_numero1.value)
+        let numero2 = Number(ipt_numero2.value)
+        let multiplo = 1;
+        let mensagem = '';
+        let soma = 0;
+
+        while(multiplo <= numero1){
+            if(multiplo % numero2 == 0){
+                mensagem += `${multiplo} <br>`
+                soma += multiplo
+            }
+        multiplo++  
+        }
+        mensagem += `<br> Soma dos Múltiplos: ${soma}`
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

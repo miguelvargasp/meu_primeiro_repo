@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<span>Valor renda familiar:</span>
+<input type="text" id="input_renda"/><br>
+<span>Valor prestação:</span>
+<input type="text" id="input_prest"/><br>
+<button onclick="calcular()"> Verificar financiamento</button>
+<div id="div_exibir"></div>
+
+
+
+</body>
+</html>
+<script>
+    function calcular() {
+        let nr = Number(input_renda.value)
+        let np = Number(input_prest.value)
+        let fin = (np/nr) * 100       
+        div_exibir.innerHTML = `A prestação corresponde a ${fin.toFixed(2)}% da renda familiar`
+
+        if(fin <= 30) {
+            div_exibir.innerhtml =`A prestação corresponde a ${fin.toFixed(2)}% da renda familiar`
+        }
+
+        else{
+            div_exibir.innerHTML += `<br> <b style= "color: red";>Será necessário complementar a renda familiar</b>`
+        }
+    }
+
+</script>

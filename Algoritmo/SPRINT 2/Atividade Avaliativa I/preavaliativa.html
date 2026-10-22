@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Pré-Avaliativa</h2>
+    Qual combustível vendeu?
+    
+    <select id="select_combus">
+        <option value="1">gasolina</option>
+        <option value="2">etanol</option>
+        <option value="3">diesel</option>
+    </select> <br>
+
+    Informe a quantidade de litros vendida:
+    <label for="ipt_quant"></label>
+    <input type="text" id="ipt_quant"> <br>
+
+
+    Hora da venda <br>
+    <select id="select_hora">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+    </select> <br>
+
+    <button onclick="vender()">Quantidade vendida</button>
+    <button onclick="encerrar()">Encerrar o dia</button>
+
+    <div id="div_mensagem"></div>
+
+
+
+</body>
+</html>
+<script>
+        let venda = 0;
+        let acumurec = 0;
+        let acumdesc = 0;
+        let litrosgas = 0;
+        let litroseta = 0;
+        let litrosdie = 0;
+
+        function vender(){
+            let litros = Number(ipt_quant.value);
+            let combustivel = select_combus.value; 
+            let hora = Number(select_hora.value);
+
+            let precoun;
+            let desc;
+
+            if (combustivel == 1) {          
+                precoun = 6.49
+                desc = 0.0505
+                litrosgas += litros
+            } else if (combustivel == 2) {   
+                precoun = 4.44
+                desc = 0.048
+                litroseta += litros
+            } else if (combustivel == 3) {   
+                precoun = 4.39
+                desc = 0.0303
+                litrosdie += litros
+            }
+
+            let valor = litros * precoun;
+            let temDesconto = (litros >= 20 && (hora >= 21 || hora <= 6));
+
+            let desconto;
+
+            if (temDesconto) {
+                desconto = valor * desc;
+            } else {
+                desconto = 0
+            }
+            let valorrec = valor - desconto;
+
+            venda++;
+            acumurec += valorrec;
+            acumdesc += desconto;
+
+            div_mensagem.innerHTML += `Venda ${venda}ª - Valor Recebido = R$ ${valorrec.toFixed(2)} - 
+            Desconto Concedido = R$ ${desconto.toFixed(2)} - Acumulado dos Recebimentos= R$ ${acumurec.toFixed(2)} - Acumulado dos Descontos = R$ ${acumdesc.toFixed(2)}<br>`;
+        }
+        
+        function encerrar(){
+            let total = litrosgas + litroseta + litrosdie;
+
+            div_mensagem.innerHTML += `<b>Resumo do Faturamento</b><br>
+            Valor Total Recebido = R$ ${acumurec.toFixed(2)}<br>
+            Valor Total dos Descontos = R$ ${acumdesc.toFixed(2)}<br><br>
+            Quantidade de Gasolina Vendida = ${litrosgas.toFixed(2)} litros == ${litrosgas / total * 100} %<br>
+            Quantidade de Etanol Vendida = ${litroseta.toFixed(2)} litros == ${litroseta / total * 100} %<br>
+            Quantidade de Diesel Vendida = ${litrosdie.toFixed(2)} litros == ${litrosdie / total * 100} %`;
+            
+    }
+
+        
+</script>

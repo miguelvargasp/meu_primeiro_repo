@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> Auxílio Emergencial Covid-19</h2>
+    <span>Informe o valor da sua renda</span> <br>
+    <label for="input_renda"></label>
+    <input type="text" id="input_renda"> <br>
+    <span>Informe o valor da renda familiar</span> <br>
+    <label for="input_rendaf"></label>
+    <input type="text" id="input_rendaf"> <br>
+    <button onclick="ter()">Terei o benefício</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+<script>
+    function ter(){
+        let renda = Number(input_renda.value)
+        let rendafam = Number(input_rendaf.value)
+        
+        if(renda <= 2000 || rendafam <= 3000){
+            div_exibir.innerHTML = `Você terá direito ao auxílio`
+        } else{
+            div_exibir.innerHTML = `Sem direito ao auxílio`
+        }
+    
+    }
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Primeira e Última letra</h2>
+    Digite uma frase: <br>
+    <label for="input_frase"></label>
+    <input type="text" id="input_frase"> <br>
+
+    Digite uma palavra: <br>
+    <label for="input_palavra"></label>
+    <input type="text" id="input_palavra"> <br>
+
+    <button onclick="analisar()">Analisar frase</button>
+    <div id="div_exibir"></div>
+
+</body>
+</html>
+<script>
+    function analisar(){
+        let frase = input_frase.value
+        let palavra = input_palavra.value
+        let comter = frase.startsWith(palavra) && frase.endsWith(palavra)
+        let comeca = frase.startsWith(palavra)
+        let termina = frase.endsWith(palavra)
+
+        if(comter){
+            div_exibir.innerHTML = `A frase começa e termina com ${palavra}!`
+        } else if(comeca){
+            div_exibir.innerHTML = `A frase começa com ${palavra}!`
+        } else if(termina){
+            div_exibir.innerHTML = `A frase termina com ${palavra}!`
+        } else{
+            div_exibir.innerHTML = `A frase não começa e nem termina com ${palavra}!`
+        }
+    
+    }
+</script>

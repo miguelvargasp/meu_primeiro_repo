@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Bolsa de Estudos Integral</h2>
+    Informe sua renda familiar: <br>
+    <label for="input_renda"></label>
+    <input type="text" id="input_renda"> <br>
+
+    Informe a média escolar do aluno: <br>
+    <label for="input_media"></label>
+    <input type="text" id="input_media"> <br>
+
+    O aluno é atleta federado? <br>
+    <select id="select_aluno">
+        <option disabled value="">Aluno federado?</option>
+        <option value="1">Sim</option>
+        <option value="2">Não</option>
+    </select> <br>
+
+    <button onclick="verificar()">Verificar bolsa</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function verificar(){
+        let renda = Number(input_renda.value)
+        let media = Number(input_media.value)
+        let federado = select_aluno.value
+
+        if(renda <= 800 && media >= 8 || (federado == 1 && media >= 6)){
+            alert(`Bolsa integral concedida!`)
+        } else{
+            alert(`Bolsa não concedida`)
+        }
+    }
+</script>

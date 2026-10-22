@@ -1,0 +1,59 @@
+Projetar Juros Compostos
+
+ 
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Poupança</title>
+
+</head>
+
+<body>
+
+    <h2>Poupança</h2>
+
+    Entre com o valor mensal de depósito: <input id="ipt_deposito" type="number"> <br>
+
+    Entre com a quantidade de meses: <input id="ipt_meses" type="number"> <br>
+
+    Entre com o percentual de juros: <input id="ipt_juros" type="number"> <br> <br>
+
+    Qual é o seu sonho: <input id="ipt_sonho"> <br>
+
+    Qual o valor do seu sonho: <input id="ipt_valorSonho" type="number">
+
+    <button onclick="projetar()">Projetar</button><br> <br>
+
+    <div id="div_msg"></div>
+
+</body>
+
+<script>
+
+    function projetar(){
+        let deposito = Number(ipt_deposito.value)
+        let meses= Number(ipt_meses.value)
+        let juros = Number(ipt_juros.value)
+        let sonho = ipt_sonho.value
+        let valorsonho = Number(ipt_valorSonho.value)
+        let mes = 1;
+        let mensagem = ''
+
+
+        if(deposito < 0){
+            alert(`Insira um valor válido`)
+        } else if(meses > 0 || ) 
+
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Conforto Térmico: A Temperatura Está Ideal?</h2>
+    <label for="input_temp"></label>
+    <span>Qual a temperatura ideal?</span> <br>
+    <input type="text" id="input_temp">
+    <button onclick="versit()">Ver situação...</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function versit(){
+        let temperatura = Number(input_temp.value)
+
+        if(temperatura >= 21 && temperatura <= 24){
+            div_mensagem.innerHTML = `Temperatura confortável :D`
+        } else{
+            alert('Temperatura DESCONFORTÁVEL :C')
+        }
+
+    }
+</script>

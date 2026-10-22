@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Treino de Musculação</h2>
+    Informe de quantos em quantos dias você faz musculação? <br>
+    <label for="ipt_dias"></label>
+    <input type="text" id="ipt_dias"> <br>
+    <button onclick="exibir()">Exibir rotina mensal</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function exibir(){
+        let diasint = Number(ipt_dias.value)
+        let contador = 1;
+        mensagem = '';
+        
+        while(contador <= 30){
+            if(contador % diasint == 0){
+                mensagem += `Dia ${contador} - Musculação <br>` 
+            } else{
+                mensagem += `Dia ${contador} - Comer, dormir etc <br>`
+            }
+         contador++
+        }
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

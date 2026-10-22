@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Doceria gourmet</h2>
+    Informe q quantidade vendida conforme o doce selecionado: <br>
+    Macaron
+    <input type="text" id="ipt_quantm"> <br>
+    Brigadeiro
+    <input type="text" id="ipt_quantb"> <br>
+    Cupcake
+    <input type="text" id="ipt_quantc"> <br>
+    Cheesecakes
+    <input type="text" id="ipt_quantch"> <br>
+    
+    </select> <br>
+
+    Informe o preço de unidade a ser vendida: <br>
+    Macaron:
+    <input type="text" id="ipt_precom"> <br>
+    Brigadeiro:
+    <input type="text" id="ipt_precob"> <br>
+    Cupcake
+    <input type="text" id="ipt_precoc"> <br>
+    Cheesecakes
+    <input type="text" id="ipt_precoch"> <br>
+
+    <button onclick="verificar()">verificar vendas</button>
+    <div id="div_mensagem"></div>
+    <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQez7-K6sRTx97IeVtoLIII3SQHA-SByV26SJOJHWZjZg&s=10" alt="" style="height: 100px; ; width: 100px;"> -->
+    <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlahuPai6jwwOn1snBlQQBdC3MvHApxVtc0ZdgG2PhwA&s=10" alt="" style="height: 100px; ; width: 100px;"> -->
+    <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcx3RNk3ooMa7fsUWaQS4U9cB8ubFdoXO2cUe-arZW6g&s=10" alt="" style="height: 100px; ; width: 100px;"> -->
+    <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiV-2cyEfWa0ccJNR5vQnkZ7BOzOT53b0rr134e2XyFHs4XSm15Nn3vUE&s=10" alt="" style="height: 100px; ; width: 100px;"> -->
+
+</body>
+</html>
+<script>
+    function verificar(){
+        let qmacar = Number(ipt_quantm.value)
+        let qbriga = Number(ipt_quantb.value)
+        let qcupca = Number(ipt_quantc.value)
+        let qchees = Number(ipt_quantch.value)
+        let pmacar = Number(ipt_precom.value)
+        let pbriga = Number(ipt_precob.value)
+        let pcupca = Number(ipt_precoc.value)
+        let pchees = Number(ipt_precoch.value)
+        let mensagem = '';
+        let venda = 1;
+        
+        let qtotalm = 0;
+        let qtotalm = 0;
+        let qtotalm = 0;
+        let qtotalm = 0;
+        let ptotalv = 0;
+        let totalv = 0;
+
+        if((qmacar < 0 || qbriga < 0 || qcupca < 0 || qchees < 0) || 
+        (pbriga < 0 || pbriga < 0 || pcupca < 0 || pchees < 0)) {
+            mensagem = `Insira um valor válido`
+        } else{
+            while(venda <= totalv){
+                
+                mensagem += `Venda ${venda} - <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQez7-K6sRTx97IeVtoLIII3SQHA-SByV26SJOJHWZjZg&s=10" alt="" style="height: 100px; ; width: 100px;"> - ${pmacar} <>`
+                totalv += venda
+                
+
+            }
+            venda++
+            
+        }
+        div_mensagem.innerHTML = `Total de vendas: ${totalv} <br><br> ` + mensagem
+    }
+</script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Simulador de Preço do Bilhete Único de São Paulo</h2>
+    <span>Qual tipo de passageiro?</span> 
+    <select id="select_tipo">
+        <option value="1">Comum</option>
+        <option value="2">Estudante</option>
+        <option value="3">Idoso/PNE</option>
+    </select> <br>
+    <span>Qual tipo de passagem?</span> 
+    <select id="select_passagem">
+        <option value="4">Passagem única</option>
+        <option value="5">Passagem integração</option>
+    </select> <br>
+    <button onclick="simular()">Simular preço</button>
+    <div id="div_mensagem"></div>
+
+
+
+</body>
+</html>
+<script>
+    function simular() {
+        let passagem = select_passagem.value
+        let tipo = select_tipo.value
+        let unica = 4.40
+        let int = 5.90
+        let meiaunica = 4.40 * 0.5
+        let meiaint = 5.90 * 0.5
+        let gratuito = 0
+
+        if(passagem == '4' && tipo == '1'){
+            div_mensagem.innerHTML = `Valor da passagem escolhida: R$${unica.toFixed(2)} `
+        } else if(passagem == '4' && tipo == '2'){
+            div_mensagem.innerHTML = `Valor da passagem escolhida: R$${meiaunica.toFixed(2)}`
+        } else if(passagem == '4' && tipo == '3'){
+            div_mensagem.innerHTML = `Valor da passagem escolhida: R$${gratuito.toFixed(2)}`
+        } else if(passagem == '5' && tipo == '1'){
+            div_mensagem.innerHTML = `Valor da passagem escolhida: R$${int.toFixed(2)}`
+        } else if(passagem == '5' && tipo == '2'){
+            div_mensagem.innerHTML = `Valor da passagem escolhida: R$${meiaint.toFixed(2)}`
+        } else {
+            div_mensagem.innerHTML = `Valor da passagem escolhida: R$${gratuito.toFixed(2)}`
+        }
+
+        
+    }
+</script>

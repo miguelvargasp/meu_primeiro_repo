@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="pares()">S2 pares</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function pares() {
+        let contador = 0;
+    
+        // limpa a div no início da função
+        div_mensagem.innerHTML = '';
+        
+        while (contador <= 100) {
+            console.log(contador); // exibe no console o valor atual 
+
+            // se o valor atual for par, exibe na div
+            if (contador % 2 == 0) {
+                div_mensagem.innerHTML += `${contador} <br>`;
+            }
+
+            contador++; // sempre incrementa o contador
+        }
+    }
+</script>

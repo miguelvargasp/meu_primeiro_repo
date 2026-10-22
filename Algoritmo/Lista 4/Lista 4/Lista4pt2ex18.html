@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<span>Informar quantidade de chocolates comprados</span>
+<input type="text" id="input_choco" />
+<button onclick="comprar()">Comprar</button>
+<div id="div_exibir"></div>   
+</body>
+</html>
+<script>
+    function comprar() {
+        let nc = Number(input_choco.value)
+        if(nc <= 12){
+            div_exibir.innerHTML = `o valor da sua compra foi de R$${nc * 3}`
+        }
+        else{
+            div_exibir.innerHTML = `o valor da sua compra foi de R$${nc * 2.5}`
+        }
+    }
+</script>

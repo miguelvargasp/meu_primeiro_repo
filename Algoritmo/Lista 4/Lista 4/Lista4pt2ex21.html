@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<span>Informe temperatura</span>
+<input type="text" id="input_temp"/>
+<button onclick="verificar()">Verificar clima</button>
+<div id="div_exibir"></div>
+
+
+
+
+</body>
+</html>
+<script>
+    function verificar() {
+        let nt = Number(input_temp.value)
+        if(nt < 10){
+            div_exibir.innerHTML = `<img src="https://cloudfront-us-east-1.images.arcpublishing.com/estadao/GMCOVGCCBFK6DNT3XGK2U7GYLQ.jpg" alt="bom estado">`
+        }
+        else{
+            div_exibir.innerHTML = `<img src="https://zap.aeiou.pt/wp-content/uploads/2023/04/c501b276ec5ccc53995004be2b15cb0d-783x450.jpg" alt="mau estado">`
+        }
+    }
+</script>

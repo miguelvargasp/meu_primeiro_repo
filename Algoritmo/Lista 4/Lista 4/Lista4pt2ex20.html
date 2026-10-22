@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<span>Informe frequência</span>
+<input type="text" id="input_freq"/> <br>
+<button onclick="analisar()">Analisar frequência</button>
+<div id="div_exibir"></div>
+
+
+</body>
+</html>
+<script>
+    function analisar() {
+        let nf = Number(input_freq.value)
+        if(nf <= 50){
+            div_exibir.innerHTML = `<img src="https://imagenes.elpais.com/resizer/v2/PCGSRKQ4OFGGPHEUC257ZLAJ6Y.jpg?auth=79c7efce2db2a52819859052746554373f2e84ae40de65d3f82bb1ae93619a40&width=1200" alt="turista">`
+        }
+        else{
+            div_exibir.innerHTML = `<img src="https://www.treineipassei.com.br/uploads/blog/2021-06-08-18-06-33BLOG.jpg" alt="estudioso">`
+        }
+
+    }
+</script>

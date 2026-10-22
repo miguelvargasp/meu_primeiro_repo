@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Papagaio Repetitivo</h2>
+
+    Informe um número <br>
+    <input type="text" id="ipt_numero"> <br>
+
+    Informe uma frase: <br>
+    <input type="text" id="ipt_frase"> <br>
+
+    <button onclick="repetir()">Papagaio Repetitivo</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function repetir(){
+        let numero = Number(ipt_numero.value)
+        let frase = ipt_frase.value
+        let contador = 1;
+        let mensagem= '';
+        let fraserep = ''
+        
+        while(contador <= numero){
+            fraserep += ` ${frase}`
+            mensagem += `${contador} - ${fraserep}<br>`
+            contador++
+             
+        }
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

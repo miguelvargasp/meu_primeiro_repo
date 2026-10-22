@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>Contador: <span id="span_cont">0</span></div>
+    <button onclick="incrementar()">Incrementar</button>
+    <button onclick="decrementar()">Decrementar</button>
+</body>
+</html>
+<script>
+    let contador = 0; // atribuição
+
+    function incrementar() {
+        contador = contador + 1; // reatribui
+        span_cont.innerHTML = contador;
+    }
+
+    function decrementar() {
+        contador = contador - 1;
+        span_cont.innerHTML = contador;
+    }
+</script>

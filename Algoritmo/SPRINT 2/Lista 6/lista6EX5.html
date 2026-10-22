@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Substituidor de Caracteres</h2>
+
+    Informe a sua senha: <br>
+    <label for="input_senha"></label>
+    <input type="text" oninput="exibir()" id="input_senha"> <br>
+    <div id="div_exibir"></div>
+    
+    
+</body>
+</html>
+<script>
+    function exibir(){
+        let senha = input_senha.value;
+        let subs = senha.replaceAll('a',  '@').replaceAll('A','@').replaceAll('e',  '3').replaceAll('E','3');
+        
+        div_exibir.innerHTML = `${subs}`
+     
+    }
+</script>

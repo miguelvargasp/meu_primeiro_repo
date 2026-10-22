@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Valor:
+    <input type="text" id="input_valor">
+    <br>
+    <button onclick="adicionar()">Adicionar</button>
+    <button onclick="exibir()">Exibir</button>
+    <button onclick="remover()">Remover Último</button>
+    <button onclick="analisar()">Analisar Lista</button>
+    <button onclick="pesquisar()">Pesquisar Valor</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    // lista (array / vetor): guarda vários valores em uma única variável, cada um em uma posição (índice)
+    // lembra a string: uma frase é uma sequência de CARACTERES; a lista é uma sequência de VALORES
+    // índices: 'abacate' = 0, 'banana' = 1, 'caju' = 2, 'damasco' = 3 (começa em 0, igual aos caracteres de uma frase)
+    // let lista = []; // inicializa uma lista vazia, sem conter valores armazenados
+    let lista = ['abacate', 'banana', 'caju', 'damasco'];
+
+    function exibir() {
+        // div_mensagem.innerHTML = `Adicional: ${lista}`;
+        // (alternativa: dentro da template string, a lista é convertida em texto automaticamente)
+
+        // ao colocar a lista no innerHTML, ela é convertida em texto separado por vírgulas: "abacate,banana,caju,damasco"
+        div_mensagem.innerHTML = lista;
+        // `<br>${lista}` transforma a lista em TEXTO (string); por isso podemos usar replaceAll, um método de string
+        // replaceAll: troca TODAS as vírgulas por <br>, exibindo um valor por linha (mesmo método visto em operacoes_string)
+        div_mensagem.innerHTML += `<br>${lista}`.replaceAll(',', '<br>');
+    }
+
+    function adicionar() {
+        let valor = input_valor.value;
+        // push: adiciona o valor no FINAL da lista
+        // diferente dos métodos de string (toUpperCase, replace...), que devolvem uma NOVA frase,
+        // o push altera a PRÓPRIA lista (não precisa de 'lista = ...')
+        lista.push(valor);
+        console.log(lista); // mostra a lista no console (F12) para conferir o resultado
+    }
+
+    function remover() {
+        // pop: remove o ÚLTIMO elemento da lista e DEVOLVE o valor removido (guardado na variável 'removido')
+        // em uma lista vazia, pop não faz nada e devolve undefined
+        let removido = lista.pop();
+        console.log(`Valor removido: ${removido}`);
+        console.log(lista);
+    }
+
+    function analisar() {
+        // length: quantidade de elementos da lista (na string, era a quantidade de caracteres), é uma propriedade, por isso não usa parênteses
+        // lista[0]: acesso pelo índice entre colchetes, igual a frase[0] para pegar a primeira letra de uma string
+        // lista[2]: terceiro elemento (índices 0, 1, 2)
+        // lista[lista.length - 1]: último elemento; o último índice válido é sempre 'tamanho - 1' (mesma regra da string)
+        // se o índice não existir (ex.: lista com 2 elementos e lista[2]), o resultado é undefined
+        div_mensagem.innerHTML = `
+            Tamanho: ${lista.length} <br>
+            Primeiro: ${lista[0]} <br>
+            Terceiro: ${lista[2]} <br>
+            Último: ${lista[lista.length - 1]}
+        `;
+
+        // at(): também acessa pelo índice, mas aceita índice NEGATIVO, contando a partir do fim
+        // lista.at(0) == exibir primeiro
+        // lista.at(1) == exibir segundo
+        // lista.at(-1) == exibir último
+        // lista.at(-2) == exibir penúltimo
+    }
+
+    function pesquisar() {
+        let valor = input_valor.value;
+
+        // includes: retorna true/false indicando se o valor existe na lista (mesmo nome do método de string)
+        // ATENÇÃO: na string, includes procura um TRECHO ('banana'.includes('ban') → true);
+        //          na lista, compara o ELEMENTO INTEIRO (lista.includes('ban') → false, lista.includes('banana') → true)
+        // também diferencia maiúsculas de minúsculas ('Banana' ≠ 'banana')
+        if (lista.includes(valor)) {
+            // indexOf: retorna o índice da primeira ocorrência do valor (ou -1 se não existir), igual ao da string
+            let indice = lista.indexOf(valor);
+            div_mensagem.innerHTML = `A lista inclui ${valor} na posição ${indice}`;
+        } else {
+            div_mensagem.innerHTML = `A lista não inclui ${valor}`;
+        }
+    }
+</script>
+
+<!-- ====================================================================
+     EXPLICAÇÃO DOS CONCEITOS APLICADOS
+     ====================================================================
+
+     1. LISTA (ARRAY / VETOR)
+     - Estrutura que guarda vários valores em uma única variável: let lista = ['abacate', 'banana', 'caju', 'damasco'].
+     - Os valores ficam entre colchetes [ ], separados por vírgula.
+     - Comparação com string: 
+        - A frase 'caju' é uma sequência de caracteres ('c', 'a', 'j', 'u');
+        - A lista é uma sequência de valores ('abacate', 'banana', ...). Por isso vários conceitos se repetem.
+
+     2. INDEXAÇÃO (IGUAL À STRING)
+     - Cada elemento tem um índice (posição), e a contagem começa em 0:
+         índice:     0          1        2         3
+         valor:   'abacate'  'banana'  'caju'  'damasco'
+     - Acesso com colchetes: lista[0] → 'abacate' (assim como frase[0] → primeira letra).
+     - Acesso com método at: lista.at(1) → 'banana'; lista.at(-1) → 'damasco' (último); lista.at(-2) → 'caju' (penúltimo).
+     - Último elemento: lista[lista.length - 1], pois o último índice é sempre o tamanho - 1.
+     - Acessar um índice que não existe retorna undefined (não gera erro).
+
+     3. PROPRIEDADE length
+     - Na string: quantidade de caracteres. Na lista: quantidade de elementos (4 na lista inicial).
+     - Não usa parênteses, pois é uma propriedade, e não um método.
+
+     4. MÉTODOS COM O MESMO NOME DA STRING
+     - includes(valor): retorna true/false.
+         * string → procura um TRECHO dentro da frase.
+         * lista  → procura um ELEMENTO IGUAL (inteiro e com as mesmas maiúsculas/minúsculas).
+     - indexOf(valor): retorna o índice da primeira ocorrência, ou -1 se não encontrar (mesma regra da string).
+
+     5. MÉTODOS EXCLUSIVOS DE LISTA
+     - push(valor): adiciona o valor no FINAL da lista.
+     - pop(): remove o ÚLTIMO elemento e o devolve (por isso podemos guardar em 'let removido').
+     - Diferença importante: métodos de string (toUpperCase, replace, replaceAll...) NÃO alteram a frase original,
+       eles devolvem uma nova. Já push e pop alteram a PRÓPRIA lista.
+
+     6. LISTA → TEXTO PARA EXIBIÇÃO
+     - Ao usar a lista no innerHTML ou em `${lista}`, ela é convertida em texto separado por vírgulas.
+     - Como o resultado é uma string, podemos aplicar replaceAll(',', '<br>') para exibir um valor por linha.
+     - Limitação: se um valor digitado contiver vírgula, ele será quebrado em duas linhas.
+
+     RESUMO:
+     - A lista começa com quatro frutas (abacate, banana, caju, damasco).
+     - Adicionar: lê o campo e insere o valor no final com push (resultado visível no console).
+     - Exibir: mostra a lista em uma linha (com vírgulas) e, em seguida, um valor por linha.
+     - Remover Último: retira o último elemento com pop e mostra no console o valor removido e a lista atualizada.
+     - Analisar Lista: mostra o tamanho e o primeiro, o terceiro e o último valor, usando length e colchetes.
+     - pesquisa(): verifica com includes se o valor digitado existe e, com indexOf, em qual posição
+       (ainda sem botão na página).
+     ==================================================================== -->

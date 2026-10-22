@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Expressar amor</h2>
+    <input type="text" id="ipt_pessoa"><br>
+    <input type="text" id="ipt_quanto"> <br>
+    <button onclick="expressar()">Expressar amor</button>
+    <div id="div_amor"></div>
+
+</body>
+</html>
+<script>
+    let contador = 0; // deixar fora da função para ele contar
+    function expressar(){
+        let pessoa = ipt_pessoa.value;
+        let quanto = Number(ipt_quanto.value);
+       
+        while(contador < quanto){
+            div_amor.innerHTML += `${pessoa}, eu te amo!Sempre lembre disso!  <br>`
+            contador ++
+        }
+    }
+</script>

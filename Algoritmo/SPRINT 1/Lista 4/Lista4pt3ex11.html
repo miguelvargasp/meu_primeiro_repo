@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Controle da umidade do ar</h2>
+    <span>Informe a umidade atual do amnbiente</span>
+    <input type="text" id="input_umidade"><br>
+    <button onclick="verificar()">Verificar umidade</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function verificar(){
+        let umidade = Number(input_umidade.value)
+        if(umidade < 0){
+            alert(`Digite um valor válido`)
+        }
+        if(umidade > 100){
+            alert(`Digite um valor válido`)
+        }
+        if(umidade < 12){
+            div_mensagem.innerHTML = `Estado de Emergencia`
+        }
+        else if(umidade <= 20){
+            div_mensagem.innerHTML = `Estado de Alerta`
+        }
+        else if(umidade <= 30){
+            div_mensagem.innerHTML = `Estado de atenção`
+        }
+        else{
+            div_mensagem.innerHTML = `Nenhum risco`
+        }
+
+    }
+</script>

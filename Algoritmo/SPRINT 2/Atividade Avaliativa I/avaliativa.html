@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Coelhildo x Tartarugo</h2>
+    Informe o tamanho da pista(m): 
+    <input type="text" id="ipt_tam"> <br>
+
+    Informe quantos metros a tartaruga anda por rodada:
+    <input type="text" id="ipt_tar"> <br>
+
+    Informe quantos metros o coelho anda por rodada:
+    <input type="text" id="ipt_cor"> <br>
+
+    A cada quantas rodadas o coelho dorme:
+    <input type="text" id="ipt_dor"> <br>
+
+    <button onclick="largadar()">Dar a largada!</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function largadar(){
+        let tamanho   = Number(ipt_tam.value);
+        let tartarugo = Number(ipt_tar.value);
+        let coelhildo = Number(ipt_cor.value);
+        let sonecasint= Number(ipt_dor.value);
+        let mensagem = '';
+        let mensagemv = '';
+        let totaltar = 0;
+        let totalcoe = 0;
+        let sonecas = 0;
+        let rodadas = 0;
+
+
+        if(tamanho == 0 || tartarugo == 0 || coelhildo == 0 || sonecasint == 0){
+            alert(`Insira um valor válido`)
+        } else if(tartarugo >= coelhildo){
+            alert(`Insira um valor válido`)
+        } else if(sonecasint < 2){
+            alert(`Insira um valor válido`)
+        } else{
+            while(totaltar < tamanho && totalcoe < tamanho){
+                rodadas++
+                
+                if(rodadas % sonecasint == 0){
+                    totaltar += tartarugo
+                    sonecas++
+                    mensagem += `Rodada ${rodadas}: Tartaruga ${totaltar} m | Coelho ${totalcoe}m - Coelho dormindo (zzz...)<br>`
+                } else{
+                    totaltar += tartarugo
+                    totalcoe += coelhildo
+                    mensagem += `Rodada ${rodadas}: Tartaruga ${totaltar} m | Coelho ${totalcoe}m <br>`
+                }
+               
+                
+            }
+            if(totaltar >= tamanho && totalcoe < tamanho){
+                     mensagemv = `Resultado:<br>
+                Tartarugo Devagarinho venceu na rodada ${rodadas}! <br>
+                Coelhildo Soneca completou ${((totalcoe/tamanho)*100).toFixed(2)}% da pista. <br>
+                O coelho tirou ${sonecas} sonecas, o que representa ${((sonecas/rodadas)*100).toFixed(2)}% das rodadas.`
+                } else{ mensagemv = `Resultado:<br>
+                Coelhildo Soneca venceu na rodada ${rodadas}! <br>
+                Tartarugo completou ${((totaltar/tamanho)*100).toFixed(2)}% da pista. <br>
+                O coelho tirou ${sonecas} sonecas, o que representa ${((sonecas/rodadas)*100).toFixed(2)}% das rodadas.`}
+            div_mensagem.innerHTML = mensagem + `<br> ${mensagemv}`
+
+        }
+    }
+    
+</script>

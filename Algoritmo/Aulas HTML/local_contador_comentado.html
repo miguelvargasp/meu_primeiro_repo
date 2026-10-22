@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div_contagem">Contador: 0</div>
+    <button onclick="incrementar()">Incrementar</button>
+    <button onclick="decrementar()">Decrementar</button>
+</body>
+</html>
+<script>
+    let contador = 0; // atribuição
+
+    function incrementar() {
+        contador = contador + 1; // reatribui
+        div_contagem.innerHTML += `<br>Contador: ${contador}`;
+    }
+
+    function decrementar() {
+        contador = contador - 1;
+        div_contagem.innerHTML += `<br>Contador: ${contador}`;
+    }
+</script>
+
+<!-- ====================================================================
+     EXPLICAÇÃO DOS CONCEITOS APLICADOS
+     ====================================================================
+
+     1. VARIÁVEL GLOBAL "contador"
+     - let contador = 0; fica fora das funções, então é global: incrementar() e decrementar() enxergam e alteram a MESMA variável.
+
+     2. ATRIBUIÇÃO vs. REATRIBUIÇÃO
+     - "let contador = 0;" é a ATRIBUIÇÃO inicial, cria a variável e dá o primeiro valor a ela.
+     - "contador = contador + 1;" é uma REATRIBUIÇÃO, usa o valor ATUAL de contador para calcular o novo valor (não usa "let" de novo, só "=").
+
+     3. innerHTML += (ACRESCENTAR, NÃO SUBSTITUIR)
+     - O operador += pega o conteúdo que já existe dentro de div_contagem e ACRESCENTA o novo texto no final, em vez de apagar o que tinha antes.
+     - Por isso, a cada clique aparece uma NOVA LINHA (o <br> força a quebra), formando um histórico com todos os valores por que o contador passou.
+
+     4. incrementar() e decrementar() são espelhados
+     - A única diferença entre as duas funções é o sinal: "+ 1" numa e "- 1" na outra.
+     - O resto (reatribuir e escrever na tela) é idêntico.
+
+     RESUMO:
+     - Um contador global que soma ou subtrai 1 a cada clique, e escreve CADA valor numa nova linha (histórico completo), porque usa innerHTML += em vez de innerHTML =.
+     ==================================================================== -->

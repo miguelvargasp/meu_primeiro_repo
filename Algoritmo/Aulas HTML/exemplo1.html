@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt_idade">
+    <button onclick="exibir()">Exibir</button>
+</body>
+</html>
+<script>
+    function exibir(){
+        let idade = Number(ipt_idade.value)
+
+        if (idade >= 16){
+            alert("Pode votar")
+        }
+
+        alert("Você precisa votar!")
+    }
+</script>

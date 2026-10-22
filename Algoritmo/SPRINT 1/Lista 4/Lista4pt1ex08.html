@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Informe o saldo da conta</span>
+    <input type="text" id="input_saldo" /> <br>
+    <span>Informe o valor do débito</span>
+    <input type="text" id="input_debito" /> <br>
+    <button onclick="analisar()">Analisar conta</button>
+    <div id="div_exibir"></div>
+    
+</body>
+</html>
+<script> 
+    function analisar() {
+    let ns = Number(input_saldo.value)
+    let nd = Number(input_debito.value)
+    let novosaldo = ns - nd
+    
+    if(novosaldo >= 0){
+        div_exibir.innerHTML = `O saldo atual da conta corrente é R$${novosaldo.toFixed(2)}`
+    }
+    else{
+        div_exibir.innerHTML = `<b style="color: red;">O saldo atual da conta corrente é R$${novosaldo.toFixed(2)}</b>`
+    }
+    }
+</script>

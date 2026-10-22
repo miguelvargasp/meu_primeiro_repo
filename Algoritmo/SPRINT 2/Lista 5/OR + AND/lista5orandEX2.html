@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2></h2>
+    Informe a sua renda mensal:
+    <label for="input_renda"></label>
+    <input type="text" id="input_renda"> <br>
+
+    Informe o seu score de crédito:
+    <label for="input_score"></label>
+    <input type="text" id="input_score"> <br>
+
+    Informe quantos anos já tem de correntista:
+    <label for="input_anosc"></label>
+    <input type="text" id="input_canos"> <br>
+
+    Possui dívidas em aberto?
+    <select id="select_divida">
+        <option disabled value="">Possui dívidas?</option>
+        <option value="1">Sim</option>
+        <option value="2">Não</option>
+    </select>
+
+    <button onclick="analisar()">Analisar crédito</button>
+    <div id="div_mensagem"></div>
+
+    
+</body>
+</html>
+<script>
+    function analisar(){
+        let renda = Number(input_renda.value)
+        let score = Number(input_score.value)
+        let canos = Number(input_canos.value)
+        let divida = select_divida.value
+
+        if(renda >= 3000 && score >= 600 || (canos > 5 && divida == 2)){
+            alert(`Empréstimo aprovado`)
+        } else{
+            alert(`Empréstimo negado`)
+        }
+    }
+</script>

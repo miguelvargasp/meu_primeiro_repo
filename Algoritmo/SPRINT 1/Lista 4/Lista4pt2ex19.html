@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<span>Qual a sua meta de economia?</span>
+<input type="text" id="input_meta1"/> <br>
+<span>Quanto você tem guardado?</span>
+<input type="text" id="input_econo"/> <br>
+<button onclick="analisar()">Analisar economia</button>
+<div id="div_exibir"></div>
+
+</body>
+</html>
+<script>
+    function analisar() {
+        let nm = Number(input_meta1.value)
+        let ne = Number(input_econo.value)
+       
+        if(ne == nm){
+            div_exibir.innerHTML = `Parabéns, meta alcançada! <br>`
+        }
+        
+        else{ if(ne > nm){
+            let ultrap = (ne - nm)
+            div_exibir.innerHTML = `Meta ultrapassada em ${ultrap}` 
+            }
+        
+        
+        else{
+            let falta = (nm - ne) 
+            div_exibir.innerHTML = ` Força! Ainda em busca da metal! Falta ${falta}`
+        }
+    }
+}
+    
+</script>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Informe idade e nome:</span>
+    <input type="text" id="input_idade"/> <br>
+    <input type="text" id="input_nome"/>
+    <button onclick="avaliar()">Analisar aluno</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+<script>
+    function avaliar() {
+        let idade = input_idade.value
+        let nome = input_nome.value
+        if(idade >= 18) {
+            div_exibir.innerHTML = `${nome}, vamos tirar a CNH? <br>`
+        }
+            else{
+            div_exibir.innerHTML = `${nome}, vai jogar PlayStation!`
+        }
+    }
+</script>

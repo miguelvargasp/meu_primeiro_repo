@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="peso" />
+    <input type="text" id="altura" />
+    <button onclick="calcular()">Calcular IMC</button>
+    <div id="div_exibir"></div>
+
+
+</body>
+</html>
+<script>
+    function calcular() {
+        let n1 = Number(peso.value)
+        let n2 = Number(altura.value)
+        let resultado = n1 / (n2 * n2)
+        let mensagem = `${resultado}`
+
+        div_exibir.innerHTML = mensagem
+    }
+
+</script>

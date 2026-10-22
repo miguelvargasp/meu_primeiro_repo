@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="div_contador">Saldo: 0</div>    
+<button onclick="calcular()">Receber 100</button>
+<button onclick="calcular2()">Pagar 50</button>
+
+</body>
+</html>
+<script>
+    let saldo = 0;
+
+    function calcular() {
+        
+        saldo += 100;
+        
+        div_contador.innerHTML = `Transferência de R$ ${saldo} recebida!<br>
+        Saldo: ${saldo}`; 
+
+        
+    }
+
+function calcular2() {
+        
+        saldo -= 50;
+        
+        div_contador.innerHTML = `Pagamento de R$ 50 efetuado!<br>
+        Saldo: ${saldo}`; 
+
+        
+    }
+
+</script>

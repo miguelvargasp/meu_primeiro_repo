@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Processo Seletivo: Vestibular ou ENEM?</h2>
+    Informe a sua nota no vestibular interno: <br>
+    <label for="input_vest"></label>
+    <input type="text" id="input_vest"> <br>
+    Informe a sua nota no ENEM: <br>
+    <label for="input_enem"></label>
+    <input type="text" id="input_enem"> <br>
+    Informe a sua nota de redação: <br>
+    <label for="input_reda"></label>
+    <input type="text" id="input_reda"> <br>
+    <button onclick="verificar()">Verificar aprovação</button> 
+    <div id="div_mensagem"></div>
+
+
+</body>
+</html>
+<script>
+    function verificar(){
+        let vest = Number(input_vest.value) 
+        let enem = Number(input_enem.value) 
+        let reda = Number(input_reda.value)
+
+        if(vest >= 700 || (enem >= 650 && reda > 0)){
+            div_mensagem.innerHTML = 'Aprovado!'
+        } else{
+            div_mensagem.innerHTML = 'Não aprovado'
+        }
+    }
+</script>

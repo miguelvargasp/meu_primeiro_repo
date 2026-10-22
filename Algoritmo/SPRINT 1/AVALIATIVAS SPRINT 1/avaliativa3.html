@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Simulação de corrida</h1>
+<span>Informe a distância que será percorrida</span>
+<input type="text" id="input_dist"/> <br>
+<span>Informe a velocidade do carro</span>
+<input type="text" id="input_vel"/> <br>
+<button onclick="simular()">Simular</button>
+<div id="div_exibir"></div>
+
+</body>
+</html>
+<script>
+    let gasolina = 25
+
+    function simular() {
+        let km = Number(input_dist.value) 
+        let kmph = Number(input_vel.value) 
+        let combustivelgast = (km * 0.1)
+        let tempomed = km / kmph
+        let combustivel_porc = (combustivelgast/25) *100
+        let gasrest = gasolina - combustivelgast
+        let gasrest_por = (gasrest /25) * 100
+       
+
+        div_exibir.innerHTML = `Ao percorrer ${km} km, em velocidade média de ${kmph} km/h, a viagem durou ${tempomed} horas. Ao todo, foram gastos ${combustivelgast} litros de combustível (${combustivel_porc}%). Restam ${gasrest} litros de combustível (${gasrest_por}%). <br>`
+
+        if(gasrest_por >= 30){
+            div_exibir.innerHTML += 'Continuer a rodar!'
+        }
+        else{
+            div_exibir.innerHTML += 'É melhor parar para abastecer!'
+        }
+    }
+</script>

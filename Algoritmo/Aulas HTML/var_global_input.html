@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nome: 
+    <input value="123" type="text" id="input_nome">
+    <button onclick="exibir()">Exibir</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let nome = ''; // capturou o valor
+    // let nome = input_nome.value; // capturou o valor
+
+    function exibir() {
+        nome = input_nome.value;
+        div_mensagem.innerHTML = `Olá, ${nome}`;
+    }
+</script>

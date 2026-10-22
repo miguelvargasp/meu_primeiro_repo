@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=7, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Processo Seletivo Mentes Brilhantes</h2>
+    <span>Informe a sua nota do ENEM</span> <br>
+    <label for="input_nota"></label>
+    <input type="text" id="input_nota"> <br>
+    <span>Informe a sua nota do vestibular</span> <br>
+    <label for="input_notav"></label>
+    <input type="text" id="input_notav"> <br>
+    <button onclick="avaliar()">Avaliação</button>
+
+
+</body>
+</html>
+<script>
+    function avaliar(){
+        let nota =input_nota.value 
+        let notavest =input_notav.value 
+
+        if(nota >= 800 || notavest >= 700){
+            alert(`Parabéns! Aprovado`)
+        } else{
+            alert(`Tente semestre que vem`)
+        }
+    }
+</script>

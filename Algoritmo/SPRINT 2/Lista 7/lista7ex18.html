@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Divisores</h2>
+    Informe um número entre 0 e 100: <br>
+    <input type="text" id="ipt_numero"> <br>
+    <button onclick="ver()">Ver divisores</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function ver(){
+        let numero = Number(ipt_numero.value)
+        let mensagem = '';
+        let divisor = 1;
+        
+        while(numero >= 0 && numero <= 100 && divisor <= numero){
+            if(numero % divisor == 0){
+                mensagem += `${divisor} <br>`
+            }
+            divisor++
+        }
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

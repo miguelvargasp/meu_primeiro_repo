@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="idade"/>
+    <button onclick="idade1()">Aposentadoria homem</button>
+    <button onclick="idade2()">Aposentadoria mulher</button>
+    <div id="div_exibir"></div>
+
+
+
+</body>
+</html>
+<script>
+    function idade1() {
+        let n1 = Number(70)
+        let n2 = Number(idade.value)
+        let resultado1 = n1 - n2
+        let mensagem = `Anos que faltam para você se aposentar é de: ${resultado1}`
+        
+        div_exibir.innerHTML = mensagem
+}
+
+    function idade2() {
+        let n1 = Number(60)
+        let n2 = Number(idade.value)
+        let resultado2 = n1 - n2
+        let mensagem2 = `Anos que faltam para você se aposentar é de: ${resultado2}`
+        
+        div_exibir.innerHTML = mensagem2
+    }
+
+</script>

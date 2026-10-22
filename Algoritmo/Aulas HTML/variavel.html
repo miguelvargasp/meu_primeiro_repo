@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        input#ipt_n1 - cria a input com id "ipt_n1"
+        button[onclick=calcular]{Calcular Média}
+    -->
+    Número 1: 
+    <input type="text" id="ipt_n1"> <br>
+    Número 2: 
+    <input type="text" id="ipt_n2"> <br>
+    <button onclick="calcularMedia()">Calcular Média</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function calcularMedia() {
+        // variável é uma caixinha que armazena um valor temporariamente
+        let n1 = Number(ipt_n1.value); 
+        let n2 = Number(ipt_n2.value); 
+        let media = (n1 + n2) / 2;
+        div_mensagem.innerHTML = `A média entre ${n1} e ${n2} é ${media}`;
+    }
+</script>

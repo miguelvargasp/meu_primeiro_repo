@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<span>Informe saldo da conta</span>
+<input type="text" id="input_saldo"/>
+<button onclick="verificar()">Verificar finanças</button>
+<div id="div_exibir"></div>
+
+
+</body>
+</html>
+<script>
+    function verificar() {
+            let saldo = Number(input_saldo.value);
+            if(saldo == 0) {
+            div_exibir.innerHTML = `Conta zerada`
+        }
+            else{
+                if(saldo > 0){
+                div_exibir.innerHTML = `Saldo positivo` // rever
+            }
+                else{
+                div_exibir.innerHTML = `Está devendo`
+            }
+            }
+    }
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Valor:
+    <input type="text" id="input_valor">
+    <br>
+    <button onclick="adicionar()">Adicionar</button>
+    <button onclick="exibir()">Exibir</button>
+    <button onclick="remover()">Remover Último</button>
+    <button onclick="analisar()">Analisar lista</button>
+    <button onclick="pesquisa()">Pesquisa</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    //array
+    let lista = [];
+
+    function exibir(){
+        div_mensagem.innerHTML = lista
+        div_mensagem.innerHTML += `<br>${lista}`.replaceAll(',', '<br>');
+    }
+
+    function adicionar(){
+      
+        let valor = input_valor.value;
+        lista.push(valor);
+        console.log(lista);
+    }
+    function remover() {
+        let removido = lista.pop();
+        console.log(`valor removido: ${removido}`);
+        console.log(lista);
+    }
+
+    function analisar() {
+        div_mensagem.innerHTML = ` 
+            Tamanho: ${lista.length} <br>
+            Primeiro: ${lista[0]} <br>
+            Terceiro: ${lista[2]} <br>
+            Último: ${lista.length - 1} <br> `
+    }
+
+    function pesquisa() {
+        let valor = input_valor.value;
+
+        if(lista.includes(valor)) { // ou indice >= 0 também funciona, poois se não encontrou menor que zero, não vai voltando do último para trás
+            let indice = lista.indexOf(valor)
+            div_mensagem.innerHTML = `A lista inclui ${valor}`
+        } else {
+            div_mensagem.innerHTML = `A lista não inclui ${valor}`
+        }
+    }
+   
+</script>

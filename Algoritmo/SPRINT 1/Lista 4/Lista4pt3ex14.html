@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Representação do humor do usuário </h2>
+    <span>Como está se sentindo hoje?</span>
+    <input type="text" id="input_humor">
+    <button onclick="mostrar()">Mostrar humor</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+<script>
+    function mostrar() {
+        let humor = input_humor.value
+        if(humor == 'Feliz'){
+            div_exibir.innerHTML = `<img src="https://images.vexels.com/media/users/3/134594/isolated/preview/cb4dd9ad3fa5ad833e9b38cb75baa18a-emoticon-emoji-feliz.png?w=360" alt="">`
+        }
+        else if(humor == 'Triste' ){
+            div_exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEKs3TJuxeEmX4ZMbQdxbRxg4cCYee594pHcv4rMUTgg&s=10" alt="">`
+        }
+        else if(humor == 'Bravo' ){
+            div_exibir.innerHTML = `<img src="https://images.emojiterra.com/google/noto-emoji/unicode-17.0/color/1024px/1f621.png" alt="">`
+        }
+        else if(humor == 'Surpreso'){
+            div_exibir.innerHTML = `<img src="https://images.emojiterra.com/google/android-11/512px/1f62f.png" alt="">`
+        }
+        else if(humor == 'Cansado'){
+            div_exibir.innerHTML = `<img src="https://ih1.redbubble.net/image.101281035.8142/raf,360x360,075,t,fafafa:ca443f4786.jpg" alt="">`
+        }
+    }
+</script>

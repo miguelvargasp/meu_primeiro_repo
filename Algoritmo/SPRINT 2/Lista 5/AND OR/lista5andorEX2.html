@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Simulador de Preferências de Compras: Será que Robervaldo Gostaria?</h2>
+    <span>Informe o tamanho da tela do celular encontrado(polegadas)</span> <br>
+    <label for="input_tam"></label>
+    <input type="text" id="input_tam"> <br>
+    <span>Selecione a cor do celular encontrado</span> <br>
+    <select id="select_cor">
+        <option value="1">Preto</option>
+        <option value="2">Prata</option>
+        <option value="3">Azul</option>
+        <option value="4">Vermelho</option>
+    </select>
+    <button onclick="gostar()">Será que ele gosta?</button>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+<script>
+    function gostar() {
+        let tamanho = Number(input_tam.value)
+        let cor = select_cor.value
+
+        if(tamanho >= 6.5 && cor == 1){
+            div_mensagem.innerHTML = `<img src="https://img.magnific.com/fotos-gratis/homem-vestindo-camiseta-gesticulando_23-2149393651.jpg?semt=ais_hybrid&w=740&q=80" alt="">`
+        } else if(tamanho >= 6.5 && cor == 2){
+            div_mensagem.innerHTML = `<img src="https://img.magnific.com/fotos-gratis/homem-vestindo-camiseta-gesticulando_23-2149393651.jpg?semt=ais_hybrid&w=740&q=80" alt="">`
+        } else{
+            div_mensagem.innerHTML = `<img src="https://static.vecteezy.com/ti/fotos-gratis/t2/72502776-fechar-acima-retrato-do-uma-triste-pequeno-menina-chorando-com-lagrima-em-sombrio-fundo-emocional-infancia-momento-mental-saude-solidao-foto.jpg" alt="">`
+        }
+
+    }
+</script>

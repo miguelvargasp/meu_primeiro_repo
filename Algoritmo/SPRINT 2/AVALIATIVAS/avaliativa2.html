@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Acessoria de Corrida</h2>
+    Distância inicial semanal do aluno (em km).
+    <input type="text" id="ipt_distanc"> <br>
+    O percentual de aumento semanal desejado (de 1 a 10).
+    <input type="text" id="ipt_aumento"> <br>
+    A meta de distância semanal (em km).
+    <input type="text" id="ipt_metadis"> <br>
+    O número máximo de semanas do plano.
+    <input type="text" id="ipt_semanas"> <br>
+
+    <button onclick="gerar()">Gerar Planilha</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function gerar(){
+        let distanc= Number(ipt_distanc.value)
+        let aumento= Number(ipt_aumento.value)
+        let metadis= Number(ipt_metadis.value)
+        let semanas= Number(ipt_semanas.value)
+        let contador = 0;
+        let mensagem = '';
+        let totaldist = 0;
+        
+        
+        
+
+        if(distanc <= 0){
+            mensagem = `Insira um valor válido`
+        } else if(aumento < 1 || aumento > 10){
+            mensagem = `Insira um valor válido`
+        } else if(metadis <= distanc){
+            mensagem = `Insira um valor válido`
+        } else if (semanas < 1 || semanas > 24){
+            mensagem = `Insira um valor válido`
+        } else{
+            while(distanc <= metadis){
+                contador++
+                
+                if(contador % 4 == 0){
+                    mensagem += `Semana ${contador} - ${(distanc*0.7).toFixed(2)} km (${(((distanc*0.7)/metadis)*100).toFixed(2)}% da meta)<br>`
+                    totaldist += distanc * 0.7
+                }
+                else{
+                    let perAumento = ((distanc/100) * aumento);
+                    mensagem += `Semana ${contador} - ${distanc.toFixed(2)} km (${((distanc/metadis)*100).toFixed(2)}% da meta)<br>`  
+                    distanc += perAumento
+                    totaldist += distanc
+
+                }
+                
+                div_mensagem.innerHTML = mensagem + `Meta de ${metadis} km atingida na semana ${contador}! Total acumulado no plano: ${totaldist.toFixed(2)} km. `
+
+            }
+        }
+    }
+</script>

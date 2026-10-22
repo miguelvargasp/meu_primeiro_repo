@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        input#ipt_n1 - cria a input com id "ipt_n1"
+        button[onclick=calcular]{Calcular Média}
+    -->
+    Número 1:
+    <input type="text" id="ipt_n1"> <br>
+    Número 2:
+    <input type="text" id="ipt_n2"> <br>
+    <button onclick="calcularMedia()">Calcular Média</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function calcularMedia() {
+        // variável é uma caixinha que armazena um valor temporariamente
+        let n1 = Number(ipt_n1.value);
+        let n2 = Number(ipt_n2.value);
+        let media = (n1 + n2) / 2;
+        div_mensagem.innerHTML = `A média entre ${n1} e ${n2} é ${media}`;
+    }
+</script>
+
+<!-- ====================================================================
+     EXPLICAÇÃO DOS CONCEITOS APLICADOS
+     ====================================================================
+
+     1. MESMA TELA DE variavel_v1.html
+     - Dois campos numéricos e um botão que calcula a média; a interface não muda, o que muda é como o cálculo é feito dentro da função.
+
+     2. VARIÁVEL (let)
+     - "variável é uma caixinha que armazena um valor temporariamente" (comentário já presente no código).
+     - Cada etapa do cálculo agora tem um nome: n1, n2 e media.
+
+     3. UMA VARIÁVEL POR ETAPA
+     - let n1 = Number(ipt_n1.value) guarda o primeiro número já convertido.
+     - let n2 = Number(ipt_n2.value) guarda o segundo número já convertido.
+     - let media = (n1 + n2) / 2 guarda o resultado da conta.
+     - No final, n1, n2 e media são só reaproveitados dentro do template literal.
+
+     4. COMPARANDO COM variavel_v1.html
+     - O resultado final é o mesmo, mas aqui cada passo tem nome e pode ser reaproveitado sem recalcular.
+     - Dá até para inspecionar com um console.log(media), por exemplo, para conferir o valor no meio do caminho.
+
+     RESUMO:
+     - Este arquivo refaz o cálculo de variavel_v1.html, mas guardando cada etapa (n1, n2, media) em variáveis antes de montar a mensagem final.
+     - Mesmo resultado na tela, código mais fácil de ler, nomear e depurar.
+     ==================================================================== -->

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nome:
+    <input value="123" type="text" id="input_nome">
+    <button onclick="exibir()">Exibir</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let nome = ''; // capturou o valor
+    // let nome = input_nome.value; // capturou o valor
+
+    function exibir() {
+        nome = input_nome.value;
+        div_mensagem.innerHTML = `Olá, ${nome}`;
+    }
+</script>
+
+<!-- ====================================================================
+     EXPLICAÇÃO DOS CONCEITOS APLICADOS
+     ====================================================================
+
+     1. VARIÁVEL GLOBAL
+     - let nome = ''; está fora de qualquer função, no nível mais alto do script.
+     - Isso a torna uma variável GLOBAL: existe assim que a página carrega e continua viva enquanto a página estiver aberta, acessível tanto fora quanto dentro de qualquer função.
+
+     2. A ARMADILHA NA LINHA COMENTADA
+     - // let nome = input_nome.value; mostra um erro comum: capturar o valor do input já na primeira linha do script, no momento em que a página carrega.
+     - Se essa linha estivesse ativa, "nome" ficaria travado no valor inicial do input ("123") para sempre — porque ela só é executada UMA VEZ, quando o script roda, e nunca mais.
+
+     3. REATRIBUIÇÃO DENTRO DA FUNÇÃO
+     - Dentro de exibir(), a linha "nome = input_nome.value;" (sem "let") é uma REATRIBUIÇÃO: atualiza a variável global já existente.
+     - Como essa linha só roda quando o botão é clicado (onclick="exibir()"), ela sempre lê o valor mais recente digitado no campo.
+
+     4. ESCOPO
+     - "nome" é acessível dentro de exibir() porque foi declarada fora dela, no nível do arquivo inteiro (escopo global).
+     - Se "nome" fosse declarada com "let" dentro de exibir(), ela deixaria de existir assim que a função terminasse de rodar.
+
+     RESUMO:
+     - O arquivo contrasta capturar um valor UMA VEZ, no carregamento da página (a linha comentada, que fica desatualizada), com capturar o valor DE NOVO a cada clique, dentro da função (a linha ativa, sempre atual).
+     - Só a segunda forma acompanha o que o usuário realmente digitou.
+     ==================================================================== -->

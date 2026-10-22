@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div_contador">Contador: 0</div> 
+    <button onclick="incrementar()">Incrementar</button>
+    <button onclick="decrementar()">Decrementar</button>
+</body>
+</html>
+<script>
+    let contador = 0; // define a variável apenas quando a 
+
+    function incrementar() {
+        
+        contador += 1; // contador = contador + n // contador ++ (sempre de um em um)
+        
+        div_contador.innerHTML = `Contador; ${contador}`; 
+
+        
+    }
+
+function decrementar() {
+        
+        contador -= 1; // contador = contador - n // contador -- (sempre de um em um)
+        
+        div_contador.innerHTML = `Contador; ${contador}`; 
+
+        
+    }
+
+
+
+
+</script>

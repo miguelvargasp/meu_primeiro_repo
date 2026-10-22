@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Informe última SITCOM assistida:</span>
+    <input type="text" id="input_sitcom"/> <br>
+    <span>Informe episodios assistidos:</span>
+    <input type="text" id="input_episodios"/> <br>
+    <button onclick="verificar()">Verificar nível</button>
+    <div id="div_exibir"></div>
+
+</body>
+</html>
+<script>
+    function verificar() {
+        let sitcom = input_sitcom.value
+        let ne = Number(input_episodios.value)
+        let horas = (ne * 22) / 60 
+        if(horas <= 30) {
+            div_exibir.innerHTML = `Vejo que você gosta da série ${sitcom} <br>`
+        } 
+        else {
+            div_exibir.innerHTML += `Uau, você realmente gosta dessa série!` 
+
+        }
+    }
+</script>

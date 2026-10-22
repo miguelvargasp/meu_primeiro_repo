@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="kibase" />
+    <br>
+    <span>Transformar em ...</span>
+    <br>
+    <button onclick="calcular()">SSJ</button>
+    <button onclick="calcular2()">SSJ2</button>
+    <button onclick="calcular3()">SSJ3</button>
+    <div id="div_exibir"></div>
+
+</body>
+</html>
+<script>
+    function calcular() {
+        let n1 = Number(kibase.value)
+        let resultado = n1 * 50
+        let mensagem = `Após se transformar em SSJ, o ki desse Saiyajin passa a ser de ${resultado} `
+
+        div_exibir.innerHTML = mensagem
+    }
+    function calcular2() {
+        let n1 = Number(kibase.value)
+        let resultado = n1 * 100
+        let mensagem = `Após se transformar em SSJ2, o ki desse Saiyajin passa a ser de ${resultado} `
+
+        div_exibir.innerHTML = mensagem
+    }
+    function calcular3() {
+        let n1 = Number(kibase.value)
+        let resultado = n1 * 200
+        let mensagem = `Após se transformar em SSJ3, o ki desse Saiyajin passa a ser de ${resultado} `
+
+        div_exibir.innerHTML = mensagem
+    }
+
+</script>

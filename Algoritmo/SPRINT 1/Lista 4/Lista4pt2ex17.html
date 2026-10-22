@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<span>Informe numero 1</span>
+<input type="text" id="input_numero1"/> <br>
+<span>Informe numero 2</span>
+<input type="text" id="input_numero2"/><br>
+<button onclick="testar()">testar</button>
+<div id="div_exibir"></div>
+
+</body>
+</html>
+<script>
+    function testar() {
+        let n1 = Number(input_numero1.value)
+        let n2 = Number(input_numero2.value)
+        let divisivel = n1 % n2 
+
+        if(divisivel == 0){
+            div_exibir.innerHTML = `positivo`
+        }
+        else{
+            div_exibir.innerHTML = `negativo`
+        }
+    }
+</script>

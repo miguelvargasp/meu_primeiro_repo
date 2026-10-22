@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Diário de Viagens: Do Primeiro ao Último Destino</h2>
+
+    Infore o destino de viagem: <br>
+    <label for="ipt_destino"></label>
+    <input type="text" id="ipt_destino"> <br>
+    <button onclick="adicionar()">Adicionar</button>
+    <button onclick="primeira()">Primeira viagem</button>
+    <button onclick="terceira()">Terceira viagem</button>
+    <button onclick="ultima()">Última viagem</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let lista = [];
+    
+    function adicionar(){
+       let destino = ipt_destino.value;
+       lista.push(destino);
+       console.log(lista);
+       div_mensagem.innerHTML = lista
+    }
+
+    function primeira(){
+        let destino = ipt_destino.value;
+        if(lista.length == 0){
+            div_mensagem.innerHTML = `Ainda não viajou`
+        } else{
+            div_mensagem.innerHTML = `${lista[0]}`
+        }
+    }
+
+    function terceira(){
+        let destino = ipt_destino.value;
+        if(lista.length < 3){
+            div_mensagem.innerHTML = `Ainda fez a terceira viagem`
+        } else{
+            div_mensagem.innerHTML = `${lista[2]}`
+        }
+    }
+
+    function ultima(){
+        let destino = ipt_destino.value;
+        if(lista.length == 0){
+            div_mensagem.innerHTML = `Ainda não viajou`
+        } else{
+            div_mensagem.innerHTML = `${lista[lista.length - 1]}`
+        }
+    }
+    
+</script>

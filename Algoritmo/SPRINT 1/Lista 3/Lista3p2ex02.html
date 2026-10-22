@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input_numero1" />
+    <input type="text" id="input_numero2" />       
+    <button onclick="dividir()">Quociente</button>
+    <button onclick="dividir2()">Resto</button>
+    <button onclick="dividir3()">Completo</button>
+    <div id="div_exibir"></div>
+
+
+</body>
+</html>
+<script>
+    function dividir() {
+        let n1 = Number(input_numero1.value)
+        let n2 = Number(input_numero2.value)
+        let resultado = n1 / n2
+        let mensagem = `A divisão de N1 por N2 é: ${resultado}, sendo que N1 é o primeiro número recebido,
+         N2 é o segundo e ${resultado} é o quociente dessa divisão.`
+        div_exibir.innerHTML = mensagem
+    }
+    function dividir2() {
+        let n1 = Number(input_numero1.value)
+        let n2 = Number(input_numero2.value)
+        let resultado = n1 % n2
+        let mensagem = `O resto da divisão de N1 por N2 é: ${resultado}, sendo que N1 é o primeiro número recebido,
+         N2 é o segundo e ${resultado} é o resto dessa divisão.`
+        div_exibir.innerHTML = mensagem
+    }
+    function dividir3() {
+        let n1 = Number(input_numero1.value)
+        let n2 = Number(input_numero2.value)
+        let resultado1 = n1 / n2
+        let resultado2 = n1 % n2
+        let mensagem = `A divisão de N1 por N2 é: ${resultado1} e o resto dessa divisão é: ${resultado2}, sendo que N1 é o 
+        primeiro número recebido, N2 é o segundo, ${resultado1} é o quociente e ${resultado2} é o resto dessa divisão.`
+        div_exibir.innerHTML = mensagem
+    }
+
+</script>

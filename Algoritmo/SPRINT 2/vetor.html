@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Valor: 
+    <input type="text" id="input_valor">
+    <br>
+    <button onclick="adicionar()">Adicionar</button>
+    <button onclick="exibir()">Exibir</button>
+    <button onclick="remover()">Remover Último</button>
+    <button onclick="analisar()">Analisar Lista</button>
+    <button onclick="pesquisar()">Pesquisar Valor</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    // let lista = [];
+    let lista = ['abacate', 'banana', 'caju', 'damasco'];
+
+    function exibir() {
+        // div_mensagem.innerHTML = `Adicional: ${lista}`;
+        div_mensagem.innerHTML = lista;
+        div_mensagem.innerHTML += `<br>${lista}`.replaceAll(',', '<br>');
+    }
+
+    function adicionar() {
+        let valor = input_valor.value;
+        lista.push(valor);
+        console.log(lista);
+    }
+
+    function remover() {
+        let removido = lista.pop();
+        console.log(`Valor removido: ${removido}`);
+        console.log(lista);
+    }
+
+    function analisar() {
+        div_mensagem.innerHTML = `
+            Tamanho: ${lista.length} <br>
+            Primeiro: ${lista[0]} <br>
+            Terceiro: ${lista[2]} <br>
+            Último: ${lista[lista.length - 1]}
+        `; 
+
+        // lista.at(0) == exibir primeiro
+        // lista.at(1) == exibir segundo
+        // lista.at(-1) == exibir último
+        // lista.at(-2) == exibir penúltimo
+    }
+
+    function pesquisar() {
+        let valor = input_valor.value;
+
+        if (lista.includes(valor)) {
+            let indice = lista.indexOf(valor);
+            div_mensagem.innerHTML = `A lista inclui ${valor} na posição ${indice}`;
+        } else {
+            div_mensagem.innerHTML = `A lista não inclui ${valor}`;
+        }
+    }
+</script>

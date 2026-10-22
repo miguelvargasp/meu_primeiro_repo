@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="bdollars" />
+    <input type="text" id="bcotacao" />
+    <button onclick="calcular()">Calcular Câmbio</button>
+    <div id="div_exibir"></div>
+
+
+</body>
+</html>
+<script>
+    function calcular() {
+        let n1 = Number(bdollars.value)
+        let n2 = Number(bcotacao.value)
+        let resultado = (n1 * n2) - 5.50
+        let mensagem = `Ao converter seus B-Dollars, o dinheiro disponível será: R$${resultado}`
+
+        div_exibir.innerHTML = mensagem
+    }
+
+</script>

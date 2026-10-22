@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Distância percorrida
+    <input type="text" id="ipt_distancia_km">
+    Velocidade média
+    <input type="text" id="ipt_velocidade_kmh">
+    <button onclick="verificar()">Verificar</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let combustivel = 25
+    
+    function verificar(){
+        let distancia = Number(ipt_distancia_km.value)
+        let velocidade = Number(ipt_velocidade_kmh.value)
+
+        let tempo = distancia / velocidade
+
+        let gasto = distancia / 10
+
+        combustivel = combustivel - gasto
+
+        let percentualGasto = gasto * 100 / 25
+
+        let percentualCombustivel = combustivel * 100 / 25
+
+
+        div_mensagem.innerHTML += `<br> Ao percorrer ${distancia} km, em velocidade média de ${velocidade} km/h, a viagem durou ${tempo} horas. Ao todo, foram gastos ${gasto} litros de combustível (${percentualGasto}%). Restam ${combustivel} litros de combustível (${percentualCombustivel}%). <br>`
+
+        if(percentualCombustivel >= 30){
+            div_mensagem.innerHTML += "Continue a rodar"
+        }else{
+            div_mensagem.innerHTML += "É melhor parar para abastecer"
+        }
+
+    }
+</script>

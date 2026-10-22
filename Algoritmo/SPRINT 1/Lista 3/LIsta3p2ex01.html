@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="numero1" />
+    <input type="text" id="numero2" />
+    <button onclick="calcular1()">Somar</button>
+    <button onclick="calcular2()">Subtrair</button>
+    <button onclick="calcular3()">Multiplicar</button>
+    <button onclick="calcular4()">Dividir</button>
+    <div id="div_exibir"></div>
+    
+</body>
+</html>
+<script>
+    function calcular1() {
+        div_exibir.innerHTML = `O resultado da soma é: ${Number(numero1.value) + Number(numero2.value)}`
+    }
+    function calcular2() {
+        div_exibir.innerHTML = `O resultado da subtração é: ${Number(numero1.value) - Number(numero2.value)}`
+    }
+    function calcular3() {
+        div_exibir.innerHTML = `O resultado da multiplicação é: ${Number(numero1.value) * Number(numero2.value)}`
+    }
+    function calcular4() {
+        div_exibir.innerHTML = `O resultado da divisão é: ${Number(numero1.value) / Number(numero2.value)}`
+    }
+    
+</script>
+

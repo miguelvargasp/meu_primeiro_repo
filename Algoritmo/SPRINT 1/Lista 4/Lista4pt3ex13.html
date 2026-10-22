@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Imagem do Pokémon selecionado</h2>
+    <span>Qual pokémon inicial você escolheria?</span>
+    <input type="text" id="input_pokemon">
+    <button onclick="escolher()">Escolher Pokémon</button>
+    <div id="div_exibir"></div>
+
+
+</body>
+</html>
+<script>
+    function escolher(){
+        let pokemon = input_pokemon.value
+
+        if(pokemon == 'Bulbasaur'){
+            div_exibir.innerHTML = `<img src="https://static.wikia.nocookie.net/pokemontabletopunited/images/4/43/Bulbasaur.png/revision/latest?cb=20170116035333" alt="Bulbasaur">`
+        }
+        else if(pokemon == 'Charmander'){
+            div_exibir.innerHTML = `<img src="https://static0.srcdn.com/wordpress/wp-content/uploads/Red-Charmander.jpg?w=1200&h=675&fit=crop" alt="Charmander">`
+        }
+        else if(pokemon == 'Squirtle'){
+            div_exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3UzUE8X0Q9N0N5YXukk2nO2nc4pEMcsZbWRjqzaE-CA&s=10" alt="Squirtle">`
+        }
+        else{
+            div_exibir.innerHTML = `<span style="font-weight: bold;">Pokémon não reconhecido</span>`
+        }
+    }
+</script>

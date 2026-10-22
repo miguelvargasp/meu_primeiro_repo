@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ptBR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Nome da Rua/Avenida/Vila</span>
+    <input id="input_rav" type="text">
+    
+<br>
+
+<span>Numero da casa</span>
+<input id="input_numero" type="number">
+
+<button onclick="cadastrar()">Onde eu moro</button>
+
+</body>
+</html>
+<script>
+    function cadastrar() {
+        alert('Seu logradouoro é ' + input_rav.value + '\nO número do seu logradouro é ' + input_numero.value);
+    }
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Jogo da Palavra Secreta</h2>
+
+    Informe letras que podem fazer parte da palavra secreta: <br>
+    <label for="input_letras"></label>
+    <input type="text" id="input_letras"> <br>
+
+    <button onclick="verificar()">Verificar letras</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+<script>
+    
+    function verificar(){
+        let letras = input_letras.value
+        let palsec = 'chacota';
+        
+        if(palsec.includes(letras)){
+            div_exibir.innerHTML = `A letra ${letras} aparece na palavra secreta!`
+        } else{
+            div_exibir.innerHTML = `A letra ${letras} não aparece na palavra secreta!`
+        }
+
+    }
+</script>

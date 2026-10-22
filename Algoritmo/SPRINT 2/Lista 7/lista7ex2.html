@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Frase Repetitiva</h2>
+    <button onclick="dizer()">Diga algo sobre a matéria de Algoritmos</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+<script>
+    function dizer(){
+        let frase = 'Algoritmo está ficando mais difícil';
+        let contador = 0;
+        while(contador < 7){
+            div_exibir.innerHTML += `${frase} <br>`
+            contador ++;
+        }
+    }
+</script>

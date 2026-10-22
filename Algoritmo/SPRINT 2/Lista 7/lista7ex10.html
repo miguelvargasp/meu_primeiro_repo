@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Pares no intervalo</h2>
+    Informe o início do intervalo:<br>
+    <input type="text" id="ipt_inicio"> <br>
+    Informe o fim do intervalo (maior que o início):<br>
+    <input type="text" id="ipt_fim"> <br>
+    <button onclick="filtrar()">S2 Pares</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+<script>
+    function filtrar(){
+        let inicio = Number(ipt_inicio.value)
+        let fim = Number(ipt_fim.value)
+        let contador = inicio;
+        let mensagem = '';
+
+        while(contador <= fim){
+            if(contador % 2 == 0){
+                mensagem += `${contador} <br>`
+            }
+        contador++;
+        }
+            div_exibir.innerHTML = mensagem
+        
+    }
+</script>

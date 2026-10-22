@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Divisão por subtrações sucessivas</h2>
+    Informe um numero: <br>
+    <input type="text" id="ipt_numero1"> <br>
+    Informe outro numero: <br>
+    <input type="text" id="ipt_numero2"> <br>
+    <button onclick="mostrar()">Mostrar o quociente e o resto da divisão</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function mostrar(){
+        let numero1 = Number(ipt_numero1.value)
+        let numero2 = Number(ipt_numero2.value)
+        let mensagem = '';
+        let subtracao = 0;
+        let contador = 1;
+
+        while(numero2 <= numero1 && (numero2 > 0 && numero1 > 0)){
+            subtracao = `${contador} - Quociente: ${(numero1/numero2).toFixed(2)} e Resto: ${numero1 % numero2} (${numero1} e ${numero2})<br>`
+            mensagem += subtracao
+            contador++;
+            numero1 --;
+            numero2 --;
+        }
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

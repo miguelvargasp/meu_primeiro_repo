@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<span>Informe o valor da pizza:</span>
+<input type="text" id="valor_pizza" /> <br>
+<span>Informe a quantidade de amigos:</span>
+<input type="text" id= "qtd_amigos" />
+<button onclick="calcular()">Rola a pizza</button>
+<div id="div_exibir"></div> 
+
+
+</body>
+</html>
+<script>
+    function calcular() {
+        let vp = Number(valor_pizza.value)
+        let na = Number(qtd_amigos.value)
+        let valor = vp/na
+
+        if(valor > 20) {
+        div_exibir.innerHTML = `<b style="color: red;"><i>Deu ruim! Pizza muito cara!</i></b>`
+        } 
+        else {
+            div_exibir.innerHTML = `Cada amigo vai pagar R$${valor.toFixed(2)}`
+        }
+    }
+
+</script>

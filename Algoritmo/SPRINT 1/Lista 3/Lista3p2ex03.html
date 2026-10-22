@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <span>Digite seu nome:</span>   
+<input type="text" id="nomealuno" />
+<br>
+<span>Digite suas três notas:</span>
+<input type="text" id="nota1" />
+<input type="text" id="nota2" />
+<input type="text" id="nota3" />
+<button onclick="calcular()">Mostrar nota</button>
+<div id="div_exibir"></div>
+
+</body>
+</html>
+
+<script>
+    function calcular() {
+        let nn = nomealuno.value
+        let n1 = Number(nota1.value)
+        let n2 = Number(nota2.value)
+        let n3 = Number(nota3.value)
+        let media = (n1 + n2 + n3) / 3
+        let mensagem = `A soma das suas três atividades é: ${n1 + n2 + n3} <br>
+        ${nn}, a sua média é: ${media}`
+        div_exibir.innerHTML = mensagem
+    }
+
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span> informe a quantidade de KWh</span> <br>
+    <input type="text" id="qtd_energia" />
+    <button onclick="calcular()">Calcular conta de luz</button>
+    <div id="div_exibir"></div>
+
+
+</body>
+</html>
+<script>
+    function calcular() {
+        let qk = Number(qtd_energia.value)
+        let consumo = qk * 0.85
+        if(qk <= 100) {
+        alert(`R$${0.9 * consumo.toFixed(2)}`)
+        }
+        else{
+            alert(`R$${consumo.toFixed(2)}`)        
+        }
+
+    }
+
+</script>

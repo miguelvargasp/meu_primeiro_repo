@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<span> Quantidades de votos no Candidato A e Candidato B, respecticamente:</span>
+<input type="text" id="voto_a" />
+<input type="text" id="voto_b" />
+<br>
+<span> Quantidades de votos brancos e nulos, respecticamente:</span>
+<input type="text" id="voto_br" />
+<input type="text" id="voto_n" />
+<button onclick="calcular()">Resultado da Eleição</button>
+<div id="div_exibir"></div>
+
+</body>
+</html>
+<script>
+    function calcular() {
+        let na = Number(voto_a.value)
+        let nb = Number(voto_b.value)
+        let nbr = Number(voto_br.value)
+        let nn = Number(voto_n.value) 
+        let total = (na+nb+nbr+nn)
+        let ta = (na/total)*100
+        let tb = (nb/total)*100
+        let inv = ((nbr+nn)/total)*100
+        let ni = (nbr+nn)
+        let mensagem = `Total de votos: ${total}<br>
+        Candidato A: ${ta}% (${na} votos)<br>
+        Candidato B: ${tb}% (${nb} votos)<br>
+        Inválidos: ${inv}% (${ni} votos)<br>`
+        
+        div_exibir.innerHTML = mensagem
+
+
+
+    }
+
+
+</script>
