@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Carona Compartilhada</h2>
+
+    <span>Quantas pessoas irão entrar no carro?</span> <br>
+    <input type="text" id="ipt_pessoas"> <br>
+    <span>Informe o limite de passageiros do carro</span> <br>
+    <input type="text" id="ipt_limite"> <br>
+    <buttton onclick="partir()">#Partiu Carona</button>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+<script>
+    function partir(){
+        let pessoas = Number(ipt_pessoas.value);
+        let limite = Number(ipt_limite.value);
+        let mensagem = "";
+    
+        for (let contador = 1; contador <= pessoas; contador ++){
+            if(contador == 1){
+                mensagem += `Entrou o ${contador}º passageiro (que é o(a) motorista) <br>`
+            }
+            else if(contador > limite){
+                mensagem += `O ${contador}º passageiro terá de que esperar!<br>`
+            }
+            else{
+                mensagem += `Entrou o ${contador}º passageiro<br>`
+            }
+        }
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Exibição de Pares no Intervalo</h2>
+    <span>Informe um número de 1 a 10</span> <br>
+    <input type="text" id="ipt_num1"> <br>
+    <span>Informe um segundo número de 30 a 100</span> <br>
+    <input type="text" id="ipt_num2"> <br>
+    <button onclick="exibir()">Pares</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function exibir(){
+        let numero1 = Number(ipt_num1.value)
+        let numero2 = Number(ipt_num2.value)
+        let mensagem = '';
+    
+        for (let contador = numero1; contador <= numero2; contador ++){
+            if(contador % 2 == 0){
+                mensagem += `${contador}<br>`
+            }
+        }
+        div_mensagem.innerHTML = mensagem
+    }
+</script>
