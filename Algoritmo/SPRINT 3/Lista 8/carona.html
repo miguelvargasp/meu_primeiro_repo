@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carona Compartilhada</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 480px;
+      margin: 40px auto;
+      padding: 0 16px;
+    }
+    label, input, button { font-size: 1rem; }
+    input { width: 80px; padding: 6px; margin: 0 8px; }
+    button { padding: 8px 16px; cursor: pointer; }
+    #resultado { margin-top: 16px; }
+    .entrou { color: #1a7f37; }
+    .espera { color: #c62828; font-weight: bold; }
+    .erro { color: #c62828; }
+  </style>
+</head>
+<body>
+  <h1>Carona Compartilhada</h1>
+
+  <label for="qtd">Quantas pessoas vão entrar no carro?</label>
+  <input type="number" id="qtd" min="1" step="1" value="1">
+  <br><br>
+  <button id="btnPartiu">#Partiu Carona</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    const CAPACIDADE = 5;
+
+    document.getElementById("btnPartiu").addEventListener("click", function () {
+      const qtd = parseInt(document.getElementById("qtd").value, 10);
+      const resultado = document.getElementById("resultado");
+      resultado.innerHTML = "";
+
+      if (isNaN(qtd) || qtd < 1) {
+        resultado.innerHTML = '<p class="erro">Informe um número válido de pessoas (mínimo 1).</p>';
+        return;
+      }
+
+      for (let i = 1; i <= qtd; i++) {
+        const p = document.createElement("p");
+
+        if (i <= CAPACIDADE) {
+          p.className = "entrou";
+          p.textContent = "Entrou o " + i + "º passageiro" + (i === 1 ? " (motorista)" : "");
+        } else {
+          p.className = "espera";
+          p.textContent = "O " + i + "º passageiro terá que esperar!";
+        }
+
+        resultado.appendChild(p);
+      }
+    });
+  </script>
+</body>
+</html>
