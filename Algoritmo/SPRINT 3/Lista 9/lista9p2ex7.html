@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque</title>
+</head>
+<body>
+
+    <h2>Controle de Estoque de Produtos com Cálculo de Valor Total</h2>
+
+    Preço do produto: <input type="number" id="ipt_preco">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="atualizar()">Atualizar Estoque</button>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    let precos = [];
+
+    function cadastrar() {
+        let preco = Number(ipt_preco.value);
+        precos.push(preco);
+        ipt_preco.value = '';
+    }
+
+    function atualizar() {
+        let mensagem = '';
+        let soma = 0; 
+        for (let i = precos.length - 1; i >= 0; i--) {
+            mensagem += `R$${precos[i.toFixed(2)]} <br>`;
+        }
+
+        for (let i = 0; i < precos.length; i++) {
+            soma += precos[i];
+        }
+
+        mensagem += `<br>Você tem ${precos.length} produtos cadastrados em estoque <br>`;
+        mensagem += `Seu estoque vale R$${soma}`;
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

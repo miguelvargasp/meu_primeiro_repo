@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Filmes em Cores: Azul e Vermelho Alternados</h2>
+
+    Nome do filme: <input type="text" id="ipt_filme">
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <div id="div_mensagem"></div>
+    
+</body>
+</html>
+
+<script>
+    // vetor que guarda os filmes cadastrados
+    let filmes = [];
+
+    function cadastrar() {
+        let filme = ipt_filme.value;
+        filmes.push(filme);
+        let mensagem = '';
+        for (let i = 1; i < filmes.length; i++) {
+            if(i % 2 == 0){
+                mensagem += `<span style="color: blue;">${i}. ${filmes[i]} </span> <br>`
+            } else{
+                mensagem += `<span style="color: red;">${i}. ${filmes[i]} </span> <br>`
+            }
+        }
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linhas de Ônibus</title>
+</head>
+<body>
+
+    <h2>Registro de Linhas de Ônibus com Pesquisa de Histórico</h2>
+
+    Linha de ônibus: <input type="text" id="ipt_linha">
+    <button onclick="gravar()">Gravar busão</button>
+
+    <br><br>
+
+    Pesquisar linha: <input type="text" id="ipt_pesquisa">
+    <button onclick="pesquisar()">Pesquisar</button>
+
+    <div id="div_lista"></div>
+    <br>
+    <div id="div_pesquisa"></div>
+
+</body>
+</html>
+
+<script>
+    
+    let linhas = [];
+
+    function gravar() {
+        let linha = ipt_linha.value;
+        linhas.push(linha);
+        ipt_linha.value = '';
+        let mensagem = '';
+        for (let i = linhas.length - 1; i >= 0; i--) {
+            mensagem += `${linhas[i]} <br>`;
+        }
+        div_lista.innerHTML = mensagem;
+    }
+
+    function pesquisar() {
+        let pesquisa = ipt_pesquisa.value;
+        if (linhas.includes(pesquisa)) {
+            let vezes = 0;
+            let indices = [];
+            
+            for (let i = 0; i < linhas.length; i++) {
+                if (linhas[i] == pesquisa) {
+                    vezes++;
+                    indices.push(i);
+                }
+            }
+
+            div_pesquisa.innerHTML = `Você já pegou essa linha ${vezes} vezes, nos índices: ${indices.join(', ')}`;
+        } else {
+            div_pesquisa.innerHTML = 'Você nunca pegou essa linha';
+        }
+    }
+</script>

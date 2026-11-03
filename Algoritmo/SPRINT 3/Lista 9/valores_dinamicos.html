@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valores Dinâmicos</title>
+</head>
+<body>
+
+    <h2>Valores Dinâmicos</h2>
+
+    Número: <input type="number" id="ipt_numero">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <br><br>
+    <button onclick="verIndPar()">Ver Índices Pares</button>
+    <button onclick="verValPar()">Ver Valores Pares</button>
+    <button onclick="verTodos()">Ver Todos</button>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    // vetor que guarda os números cadastrados
+    let numeros = [];
+
+    // só o botão Cadastrar adiciona no vetor
+    function cadastrar() {
+        if (ipt_numero.value == '') {
+            alert('Digite um número!');
+            return;
+        }
+
+        numeros.push(Number(ipt_numero.value));
+        ipt_numero.value = '';
+        ipt_numero.focus();
+        div_mensagem.innerHTML = 'Número cadastrado!';
+    }
+
+    // todos os valores (i começa em 0!)
+    function verTodos() {
+        let mensagem = '<b>Todos:</b><br>';
+        for (let i = 0; i < numeros.length; i++) {
+            mensagem += `numeros[${i}] = ${numeros[i]} <br>`;
+        }
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    // ÍNDICES pares: o resto da divisão do índice (i) por 2 é 0
+    function verIndPar() {
+        let mensagem = '<b>Índices pares:</b><br>';
+        for (let i = 0; i < numeros.length; i++) {
+            if (i % 2 == 0) {
+                mensagem += `numeros[${i}] = ${numeros[i]} <br>`;
+            }
+        }
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    // VALORES pares: o resto da divisão do valor (numeros[i]) por 2 é 0
+    function verValPar() {
+        let mensagem = '<b>Valores pares:</b><br>';
+        for (let i = 0; i < numeros.length; i++) {
+            if (numeros[i] % 2 == 0) {
+                mensagem += `numeros[${i}] = ${numeros[i]} <br>`;
+            }
+        }
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

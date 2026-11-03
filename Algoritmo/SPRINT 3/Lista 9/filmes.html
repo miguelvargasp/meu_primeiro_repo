@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Viva de Filmes Favoritos</title>
+</head>
+<body>
+
+    <h1>Lista Viva de Filmes Favoritos</h1>
+
+    Nome do filme: <input type="text" id="ipt_filme">
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    // vetor que guarda os filmes cadastrados
+    let filmes = [];
+
+    function cadastrar() {
+        let filme = ipt_filme.value;
+
+        // não deixa cadastrar campo vazio
+        if (filme == '') {
+            alert('Digite o nome de um filme!');
+            return;
+        }
+
+        // adiciona o filme no final do vetor
+        filmes.push(filme);
+
+        // limpa o campo para o próximo filme
+        ipt_filme.value = '';
+        ipt_filme.focus();
+
+        // mostra a lista: o for percorre todo o vetor (i < filmes.length)
+        div_mensagem.innerHTML = '';
+        for (let i = 0; i < filmes.length; i++) {
+            div_mensagem.innerHTML += `${i + 1}. ${filmes[i]} <br>`;
+        }
+    }
+</script>

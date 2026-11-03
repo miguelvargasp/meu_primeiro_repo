@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Projetos</title>
+</head>
+<body>
+
+    <h2>Cadastro de Projetos e Classificação de Experiência Profissional</h2>
+
+    Nome do projeto: <input type="text" id="ipt_projeto">
+    <button onclick="registrar()">Registrar projeto</button>
+    <button onclick="mostrar()">Mostrar Projetos</button>
+
+    <div id="div_mensagem"></div>
+    <div id="div_mensagem2"></div>
+
+</body>
+</html>
+
+<script>
+    let projetos = [];
+    function registrar() {
+        let projeto = ipt_projeto.value;
+        projetos.push(projeto);
+        let quantidade = projetos.length;
+        
+
+        if (quantidade <= 4) {
+            nivel = 'Júnior';
+        } else if (quantidade <= 12) {
+            nivel = 'Pleno';
+        } else {
+            nivel = 'Sênior';
+        }
+
+        div_mensagem.innerHTML = `Você já fez ${quantidade} projetos. Por isso você é um profissional ${nivel}`;
+    }
+
+    function mostrar() {
+        for (let i = projetos.length - 1; i >= 0; i--) {
+            mensagem += `${projetos[i]} <br>`;
+        }
+        div_mensagem2.innerHTML = mensagem;
+    }
+</script>

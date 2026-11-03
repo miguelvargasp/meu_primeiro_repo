@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <h2>Valores Dinâmicos</h2>
+
+    Informe um número <br> 
+    <input type="text" id="ipt_numero"> <br>
+    <button onclick="verTodos()">Ver todos</button>
+    <button onclick="verIndPar()">Ver Indicces Parec</button>
+    <button onclick="verValPar()">Ver Valores Pares</button>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    // vetor que guarda os numeros cadastrados
+    let numeros = [];
+
+    function verTodos() {
+        let numero = Number(ipt_numero.value);
+        numeros.push(numero);
+        let mensagem = '';
+        for (let i = 1; i < numeros.length; i++) {
+            mensagem += `${i}. ${numeros[i]} <br>`;
+        }
+        div_mensagem.innerHTML = mensagem
+    }
+    
+    function verValPar(){
+        let numero = Number(ipt_numero.value);
+        numeros.push(numero);
+        let mensagem = '';
+        for (let i = 1; i < numeros.length; i++) {
+            if(i % 2 == 0){
+                mensagem += `${i}. ${numeros[i]} <br>`;
+            }
+        }
+        div_mensagem.innerHTML = mensagem
+    }
+
+    function verIndPar() {
+    let mensagem = '<b>Índices pares:</b><br>';
+    for (let i = 0; i < numeros.length; i++) {
+        if (i % 2 == 0) {
+            mensagem += `numeros[${i}] = ${numeros[i]} <br>`;
+        }
+    }
+    div_mensagem.innerHTML = mensagem;
+    }
+
+</script>
