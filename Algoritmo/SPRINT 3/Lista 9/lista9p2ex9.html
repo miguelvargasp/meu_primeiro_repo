@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Controle de Campanha de Time de Futebol com Análise de Aproveitamento</h2>
+    <span>Indique o resultado:</span> <br>
+    <select id="select_resultado">
+        <option value="1">Vitória</option>
+        <option value="2">Empate</option>
+        <option value="3">Derrota</option>
+    </select> <br>
+    <button onclick="registrar()">Registar jogo</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+<script> 
+    let listaResultados = [];
+    function registrar(){
+        let resultado = select_resultado.value
+        listaResultados.push(resultado)
+        let mensagem = '';
+        let vitorias = 0;
+        let empates = 0;
+        let derrotas = 0;
+
+        for(let i = 1; i <= listaResultados.length; i++){
+            if(resultado == 1){
+                vitorias++
+                mensagem = `O time teve: ${vitorias} vitórias, ${empates} empates, ${derrotas} derrotas <br>
+
+      Pontuação total: X pontos <br>
+
+      Aproveitamento: Y%`
+            }
+            else if(resultado == 2){ 
+                empates++
+                mensagem = `O time teve: ${vitorias} vitórias, ${empates} empates, ${derrotas} derrotas <br>
+
+      Pontuação total: X pontos <br>
+
+      Aproveitamento: Y%`
+
+            }
+        }
+    }
+</script>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Registro de Números com Histórico, Maior e Menor Valor</h2>
+
+    <span>Digite um número qualquer</span> <br />
+    <input type="text" id="ipt_numero" /> <br />
+    <button onclick="analisar()">Analisar histórico</button>
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+<script>
+  let listaNumeros = [];
+
+  function analisar() {
+    let numero = ipt_numero.value;
+    listaNumeros.push(numero);
+    let mensagem = "";
+    let maiorValor = listaNumeros[0];
+    let menorValor = listaNumeros[0];
+
+    for (i = 0; i < listaNumeros.length; i++) {
+      let valorAtual = listaNumeros[i];
+      mensagem += `${i + 1}º  Número: ${listaNumeros[i]}<br>`;
+      if (valorAtual < menorValor) {
+        menorValor = valorAtual;
+      }
+      if (valorAtual > maiorValor) {
+        maiorValor = valorAtual;
+      }
+    }
+
+    div_mensagem.innerHTML =
+      mensagem +
+      `Maior: ${maiorValor} <br>
+        Menor: ${menorValor}`;
+  }
+</script>
+

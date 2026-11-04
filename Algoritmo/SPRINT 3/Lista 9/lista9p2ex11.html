@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Sistema de Cadastro de Produtos com Relatório de Preço de Venda</h2>
+    Nome do Produto: <br>
+    <input type="text" id="ipt_produto"> <br>
+    Preço de compra: <br>
+    <input type="text" id="ipt_preco"> <br>
+    <button onclick="cadastrar()">Cadastrar</button> 
+    <button onclick="relatorio()">Relatorio</button>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+<script>
+    let listaProduto = [];
+    let listaPreco = [];
+    function cadastrar(){
+        let produto = ipt_produto.value;
+        let preco = Number(ipt_preco.value);
+        listaProduto.push(produto); 
+        listaPreco.push(preco);
+    }
+
+    function relatorio(){
+        let mensagem = `Total de produtos: ${listaProduto.length}<br><br>`
+        for(i = 0; i < listaProduto.length && i < listaPreco.length; i++){
+        let produtoAtual = listaProduto[i];
+        let precoAtual = listaPreco[i];
+        mensagem += `Produto: ${produtoAtual}<br>
+
+        Preço de compra: ${precoAtual} Vender por ${precoAtual * 1.25}`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

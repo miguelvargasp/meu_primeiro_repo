@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    Nome do Produto:
+    <input type="text" id="input_nome">
+    <br>
+
+    Preço do Produto:
+    <input type="text" id="input_preco">
+    <br>
+
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="relatorio()">Relatório de Estoque</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    /*
+     * VETORES (ARRAYS) PARALELOS
+     * Usamos duas listas que "andam juntas": a posição (índice) 0 de
+     * listaNomes corresponde à posição 0 de listaPrecos, e assim por diante.
+     * Exemplo após cadastrar 'lapis' por 1.5 e 'caneta' por 3:
+     *   listaNomes  = ['lapis', 'caneta']
+     *   listaPrecos = [  1.5  ,    3    ]
+     *   índice:          0         1
+     *
+     * São declaradas FORA das funções (escopo global) para que os dados
+     * continuem guardados entre um clique e outro. Se fossem declaradas
+     * dentro de cadastrar(), seriam recriadas vazias a cada chamada.
+     */
+    let listaNomes =  [];
+    let listaPrecos = [];
+
+    // Função chamada pelo botão "Cadastrar": adiciona um produto às listas
+    function cadastrar() {
+        // .value lê o texto digitado no input (sempre vem como string)
+        let nome = input_nome.value;
+        // Number() converte a string em número, para podermos fazer contas
+        // (sem isso, "1.5" + "2" viraria "1.52", concatenação de texto)
+        let preco = Number(input_preco.value);
+
+        /*
+         * VALIDAÇÃO com operador lógico || (OU):
+         * Basta UMA das condições ser verdadeira para entrar no if.
+         *  - nome == ""                 -> o usuário não digitou nada
+         *  - listaNomes.includes(nome)  -> o produto já foi cadastrado
+         * .includes() percorre o vetor e retorna true se encontrar o valor.
+         */
+        if (nome == "" || listaNomes.includes(nome)) {
+            alert("Este produto já existe ou não existe nome")
+        } else {
+            // .push() adiciona um elemento no FINAL do vetor.
+            // Como fazemos push nas duas listas ao mesmo tempo,
+            // nome e preço ficam sempre no mesmo índice (vetores paralelos).
+            listaNomes.push(nome);   // ex: índice 0 -> 'lapis'
+            listaPrecos.push(preco); // ex: índice 0 -> 1.5
+        }
+    }
+
+    // Função chamada pelo botão "Relatório": monta e exibe o relatório
+    function relatorio() {
+        // .length retorna a quantidade de elementos do vetor
+        let total = listaNomes.length;
+
+        /*
+         * TEMPLATE STRING (crases ` `): permite inserir variáveis com ${ }
+         * e escrever em várias linhas. <br> é a quebra de linha do HTML.
+         */
+        let mensagem = `Total de Produtos: ${total} <br><br>`;
+
+        /*
+         * LAÇO FOR (iteração): repete o bloco uma vez para cada produto.
+         *  - let i = 0                 -> começa no primeiro índice (vetores começam em 0)
+         *  - i < listaNomes.length     -> continua enquanto houver elementos
+         *                                 (o último índice é length - 1)
+         *  - i++                       -> avança para o próximo índice
+         */
+        for (let i = 0; i < listaNomes.length; i++) {
+            // Acessa o elemento da posição i em cada vetor.
+            // Graças aos vetores paralelos, nomeAtual e precoAtual são do mesmo produto.
+            let nomeAtual = listaNomes[i];
+            let precoAtual = listaPrecos[i];
+
+            // Preço de venda com 25% de lucro: multiplicar por 1.25
+            // equivale a preco + (preco * 0.25)
+            let precoVenda = precoAtual * 1.25;
+
+            /*
+             * ACUMULADOR de texto: += concatena (junta) o novo trecho ao
+             * final do que já existe em "mensagem", em vez de substituir.
+             * ${i+1}: exibimos i+1 porque, para o usuário, a contagem
+             * começa em 1, enquanto o índice começa em 0.
+             */
+            mensagem += `
+                Produto ${i+1}: ${nomeAtual} <br>
+                Preço de Compra ${precoAtual}. Vender por ${precoVenda} <br><br>
+            `;
+        }
+
+        // Observação: como as listas têm o mesmo tamanho, poderíamos usar
+        // listaPrecos.length no lugar de listaNomes.length — o resultado é igual.
+        // for (let i = 0; i < listaPrecos.length; i++) {}
+
+        // innerHTML: insere o texto dentro da div, interpretando as tags HTML (<br>)
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>
