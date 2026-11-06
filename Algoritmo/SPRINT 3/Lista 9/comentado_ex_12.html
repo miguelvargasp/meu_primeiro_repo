@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    Nome do Produto:
+    <input type="text" id="input_nome">
+    <br>
+
+    Preço do Produto:
+    <input type="text" id="input_preco">
+    <br>
+
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="relatorio()">Relatório de Estoque</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    /*
+     * VETORES PARALELOS (mesma ideia do ex_11):
+     * o índice i de listaNomes e o índice i de listaPrecos
+     * representam o MESMO produto.
+     * Ficam no escopo global para manter os dados entre os cliques.
+     */
+    let listaNomes =  [];
+    let listaPrecos = [];
+
+    // Cadastra um produto (idêntico ao ex_11)
+    function cadastrar() {
+        let nome = input_nome.value;            // texto digitado (string)
+        let preco = Number(input_preco.value);  // converte para número
+
+        // Validação: nome vazio OU nome repetido (|| = basta uma ser verdadeira)
+        if (nome == "" || listaNomes.includes(nome)) {
+            alert("Este produto já existe ou não existe nome")
+        } else {
+            // push adiciona no final das duas listas -> mantêm o mesmo índice
+            listaNomes.push(nome);   // ex: índice 0 -> 'lapis'
+            listaPrecos.push(preco); // ex: índice 0 -> 1.5
+        }
+    }
+
+    // Monta o relatório com a listagem + estatísticas (novidade do ex_12)
+    function relatorio() {
+        let total = listaNomes.length; // quantidade de produtos cadastrados
+        let mensagem = `Total de Produtos: ${total} <br><br>`;
+
+        /*
+         * BUSCA DE MAIOR E MENOR VALOR
+         * Técnica: assumimos que o PRIMEIRO elemento (índice 0) é, ao mesmo
+         * tempo, o maior e o menor. Depois, no laço, comparamos cada
+         * elemento com esse "campeão atual" e trocamos quando acharmos
+         * alguém maior (ou menor).
+         * Por que não começar com 0? Se começássemos menorPreco = 0,
+         * nenhum preço positivo seria menor que 0 e o resultado sairia errado.
+         */
+        let maiorPreco = listaPrecos[0];
+        let menorPreco = listaPrecos[0];
+        // Guardamos também o NOME correspondente, para exibi-lo no final
+        let nomeBarato = listaNomes[0];
+        let nomeCaro = listaNomes[0];
+
+        /*
+         * ACUMULADORES numéricos: começam em 0 (elemento neutro da soma)
+         * e vão somando os valores a cada volta do laço.
+         */
+        let somaCompra = 0;
+        let somaVenda = 0;
+
+        // Laço FOR: percorre todos os índices, de 0 até length - 1
+        for (let i = 0; i < listaNomes.length; i++) {
+            let nomeAtual = listaNomes[i];
+            let precoAtual = listaPrecos[i];
+            let precoVenda = precoAtual * 1.25; // 25% de margem de lucro
+
+            // Acumulador de texto: += junta o novo trecho ao relatório
+            // i+1 porque para o usuário a contagem começa em 1
+            mensagem += `
+                Produto ${i+1}: ${nomeAtual} <br>
+                Preço de Compra ${precoAtual}. Vender por ${precoVenda} <br><br>
+            `;
+
+            // Acumuladores: somaCompra = somaCompra + precoAtual (forma curta +=)
+            somaCompra += precoAtual;
+            somaVenda += precoVenda;
+
+            // Se o preço atual for maior que o maior encontrado até agora,
+            // ele passa a ser o novo maior (e guardamos o nome do produto também).
+            if (precoAtual > maiorPreco) {
+                maiorPreco = precoAtual;
+                nomeCaro = nomeAtual;
+            }
+
+            // Mesma lógica para o menor. São dois "if" separados (e não
+            // if/else) porque cada comparação é independente da outra.
+            if (precoAtual < menorPreco) {
+                menorPreco = precoAtual;
+                nomeBarato = nomeAtual;
+            }
+        }
+
+        /*
+         * MÉDIA = soma dos valores / quantidade de valores.
+         * Calculada DEPOIS do laço, pois só então a soma está completa.
+         */
+        let mediaVendas = somaVenda / listaPrecos.length;
+
+        // Adiciona as estatísticas ao final do relatório
+        mensagem += `
+            O nome do produto mais caro: ${nomeCaro} <br>
+            O nome do produto mais barato: ${nomeBarato} <br>
+            A soma dos preços de compra dos produtos: ${somaCompra} <br>
+            A média de preço de venda dos produtos: ${mediaVendas} <br>
+        `
+
+        // Exibe tudo na div, interpretando as tags HTML
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

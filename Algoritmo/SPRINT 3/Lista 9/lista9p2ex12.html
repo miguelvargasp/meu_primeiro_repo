@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Sistema Avançado de Estoque com Análise de Produtos e Estatística</h2>
+    Nome do Produto: <br>
+    <input type="text" id="ipt_produto"> <br>
+    Preço de compra: <br>
+    <input type="text" id="ipt_preco"> <br>
+    <button onclick="cadastrar()">Cadastrar</button> 
+    <button onclick="relatorio()">Relatorio</button>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+<script>
+    let listaProduto = [];
+    let listaPreco = [];
+    function cadastrar(){
+        let produto = ipt_produto.value;
+        let preco = Number(ipt_preco.value);
+
+        if (produto == "" || listaProduto.includes(produto)) {
+            alert("Este produto já existe ou não existe nome do produto")
+        } else {
+            listaProduto.push(produto);   
+            listaPreco.push(preco); 
+        }
+    }
+
+    function relatorio(){
+        let mensagem = `Total de produtos: ${listaProduto.length}<br><br>`
+        let total = listaNomes.length;
+        let maiorPreco = listaPrecos[0];
+        let menorPreco = listaPrecos[0];
+        let produtoBarato = listaProduto[0];
+        let produtoCaro = listaProduto[0];
+        let somaCompra = 0;
+        let somaVenda = 0;
+
+        for(i = 0; i < listaProduto.length && i < listaPreco.length; i++){
+            let produtoAtual = listaProduto[i];
+            let precoAtual = listaPreco[i];
+            let precoVenda = precoAtual * 1.25;
+            mensagem += `Produto: ${produtoAtual}<br>
+
+            Preço de compra: ${precoAtual} Vender por ${precoVenda}<br>`
+            somaCompra += precoAtual;
+            somaVenda += precoVenda;
+
+            
+            if (precoAtual > maiorPreco) {
+                maiorPreco = precoAtual;
+                produtoCaro = produtoAtual;
+            }
+
+           
+            if (precoAtual < menorPreco) {
+                menorPreco = precoAtual;
+                produtoBarato = produtoAtual;
+            }
+        }
+        
+        let mediaVendas = somaVenda / listaPreco.length;
+
+        // Adiciona as estatísticas ao final do relatório
+        mensagem += `
+            O nome do produto mais caro: ${produtoCaro} <br>
+            O nome do produto mais barato: ${produtoBarato} <br>
+            A soma dos preços de compra dos produtos: ${somaCompra} <br>
+            A média de preço de venda dos produtos: ${mediaVendas} <br>
+        `
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>
