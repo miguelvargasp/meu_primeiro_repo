@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Eleição de Representante de Turma</h2>
+
+    Escolha seu candidato: <br>
+    <select id="slt_candidato">
+        <option value="Mariana">Mariana</option>
+        <option value="Cléber">Cléber</option>
+        <option value="Adalberto">Adalberto</option>
+    </select> <br>
+    <button onclick="votar()">Votar</button>
+    <button onclick="apurar()">Apurar votos</button>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+<script>
+    let listaVoto = [];
+
+    function votar(){
+        let candidato = slt_candidato.value;
+
+        listaVoto.push(candidato);
+
+        div_mensagem.innerHTML = `Voto registrado! Obrigado por participar.`
+    }
+
+    function apurar(){
+        let mensagem = '';
+        let total = listaVoto.length;
+        let votosMariana = 0;
+        let votosCleber = 0;
+        let votosAdalberto = 0;
+
+        for(let i = 0; i < listaVoto.length; i++){
+            let votoAtual = listaVoto[i];
+
+            if (votoAtual == "Mariana") {
+                votosMariana++;
+            } else if (votoAtual == "Cléber") {
+                votosCleber++;
+            } else {
+                votosAdalberto++;
+            }
+        }
+
+        mensagem += `Total de votos: ${total} <br>
+            Mariana: ${votosMariana} votos <br>
+            Cléber: ${votosCleber} votos <br>
+            Adalberto: ${votosAdalberto} votos <br><br>`
+
+        let maiorVoto = votosMariana;
+        let vencedor = "Mariana";
+
+        if (votosCleber > maiorVoto) {
+            maiorVoto = votosCleber;
+            vencedor = "Cléber";
+        }
+
+        if (votosAdalberto > maiorVoto) {
+            maiorVoto = votosAdalberto;
+            vencedor = "Adalberto";
+        }
+
+        let quantosComMaior = 0;
+
+        if (votosMariana == maiorVoto) {
+            quantosComMaior++;
+        }
+        if (votosCleber == maiorVoto) {
+            quantosComMaior++;
+        }
+        if (votosAdalberto == maiorVoto) {
+            quantosComMaior++;
+        }
+
+        if (total == 0) {
+            mensagem += `Nenhum voto registrado`
+        } else if (quantosComMaior > 1) {
+            mensagem += `Houve empate!`
+        } else {
+            mensagem += `O(A) vencedor(a) é ${vencedor}!`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

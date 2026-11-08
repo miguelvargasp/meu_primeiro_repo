@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Registro de Temperaturas</h2>
+
+    Informe a Temperatura do dia: <br>
+    <input type="text" id="ipt_temperatura"> <br>
+    <button onclick="registrar()">Registrar</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let listaTemperatura = [];
+    function registrar(){
+        let temperatura = Number(ipt_temperatura.value)
+        let mensagem = '';
+        let maiorTemperatura = listaTemperatura[0];
+        let menorTemperatura = listaTemperatura[0];
+        let diasCalor = 0;
+
+        if(temperatura < -20 || temperatura > 50){
+            alert(`Temperatura inválida`)
+        } else{
+            listaTemperatura.push(temperatura);
+            
+            
+        }
+
+        for(i = listaTemperatura.length - 1; i >= 0; i--){
+            let temperaturaAtual = listaTemperatura[i];
+            mensagem += `Temperatura do dia ${i+1} adicionada <br>`
+            
+            if(temperaturaAtual < 15){
+                mensagem +=  `Dia ${i+1}: ${temperaturaAtual}°C – Frio <br>`
+            } else if(temperaturaAtual >= 15 && temperaturaAtual <= 24){
+                mensagem +=  `Dia ${i+1}: ${temperaturaAtual}°C – Agradável <br>`
+            } else {
+                mensagem +=  `Dia ${i+1}: ${temperaturaAtual}°C – Calor <br>`
+                diasCalor++;
+            }
+            
+            if (temperaturaAtual > maiorTemperatura) {
+                maiorTemperatura = temperaturaAtual;
+            }
+            
+            if (temperaturaAtual < menorTemperatura) {
+                menorTemperatura = temperaturaAtual;
+            }
+        }
+
+        mensagem += `Maior temperatura: ${maiorTemperatura}°C <br>
+
+    Menor temperatura: ${menorTemperatura}°C <br>
+
+    Dias de calor: ${diasCalor} <br>` 
+        
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

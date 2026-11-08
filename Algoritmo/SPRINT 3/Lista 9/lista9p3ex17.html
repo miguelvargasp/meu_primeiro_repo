@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Playlist de Músicas</h2>
+
+    Nome da música: <br>
+    <input type="text" id="ipt_musica"> <br>
+    Duração (em minutos): <br>
+    <input type="text" id="ipt_duracao"> <br>
+    <button onclick="adicionar()">Adicionar à playlist</button>
+    <button onclick="verPlaylist()">Ver playlist</button> <br><br>
+
+    Pesquisar música: <br>
+    <input type="text" id="ipt_pesquisa"> <br>
+    <button onclick="pesquisar()">Pesquisar</button>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+<script>
+    let listaMusica = [];
+    let listaDuracao = [];
+
+    function adicionar(){
+        let musica = ipt_musica.value;
+        let duracao = Number(ipt_duracao.value);
+
+        if (musica == "") {
+            alert("Informe o nome da música")
+        } else if (duracao <= 0) {
+            alert("Informe uma duração válida")
+        } else {
+            listaMusica.push(musica);
+            listaDuracao.push(duracao);
+            div_mensagem.innerHTML = `${musica} entrou na playlist!`
+        }
+    }
+
+    function verPlaylist(){
+        let mensagem = '';
+        let total = listaMusica.length;
+        let somaDuracao = 0;
+        let maiorDuracao = listaDuracao[0];
+        let musicaLonga = listaMusica[0];
+
+        for(let i = listaMusica.length - 1; i >= 0; i--){
+            let musicaAtual = listaMusica[i];
+            let duracaoAtual = listaDuracao[i];
+            mensagem += `Música ${i+1} - ${musicaAtual} - ${duracaoAtual} min <br>`
+
+            somaDuracao += duracaoAtual;
+
+            if (duracaoAtual > maiorDuracao) {
+                maiorDuracao = duracaoAtual;
+                musicaLonga = musicaAtual;
+            }
+        }
+
+        mensagem += `<br>Total de músicas: ${total} <br>
+
+                Duração total: ${somaDuracao} minutos <br>
+
+                Música mais longa: ${musicaLonga}`
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+    function pesquisar(){
+        let pesquisa = ipt_pesquisa.value;
+        let mensagem = '';
+        let quantidade = 0;
+        let indices = '';
+
+        for(let i = 0; i < listaMusica.length; i++){
+            if (listaMusica[i] == pesquisa) {
+                if (quantidade > 0) {
+                    indices += ", ";
+                }
+                indices += i + 1;
+                quantidade++;
+            }
+        }
+
+        if (quantidade <= 0) {
+            mensagem = `Essa música não está na playlist`
+        } else {
+            mensagem = `A música ${pesquisa} aparece ${quantidade} vezes na playlist, nos índices: ${indices}`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

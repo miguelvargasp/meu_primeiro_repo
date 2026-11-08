@@ -8,6 +8,61 @@
 <body>
     <h2>Lista de Compras</h2>
 
-    Informe o produto
+    Informe o produto: <br>
+    <input type="text" id="ipt_produto"> <br>
+    Informe o preco: <br>
+    <input type="text" id="ipt_preco"> <br>
+    <button onclick="adicionar()">adicionar</button>
+    <button onclick="verCarrinho()">Ver Carrinho</button>
+    <div id="div_mensagem"></div>
+
 </body>
 </html>
+<script>
+    let listaProduto = [];
+    let listaPreco = [];
+    function adicionar(){
+        let produto = ipt_produto.value;
+        let preco = Number(ipt_preco.value);
+
+        if (produto == "" || listaProduto.includes(produto)) {
+            alert("Este produto já existe ou não existe nome do produto")
+        } else if(preco <= 0){
+            alert("Informe um preço válido")
+        } else {
+            listaProduto.push(produto);   
+            listaPreco.push(preco); 
+        }
+    }
+    function verCarrinho(){
+        let mensagem = '';
+        let total = listaProduto.length;
+        let maiorPreco = listaPreco[0];
+        let produtoCaro = listaProduto[0];
+        let somaCompra = 0;
+
+        for(let i = listaProduto.length - 1; i >= 0; i--){
+            let produtoAtual = listaProduto[i];
+            let precoAtual = listaPreco[i];
+            mensagem += `Produto ${i+1} - ${produtoAtual} - R$${precoAtual} <br>`
+
+            somaCompra += precoAtual;
+
+            
+            if (precoAtual > maiorPreco) {
+                maiorPreco = precoAtual;
+                produtoCaro = produtoAtual;
+            }
+
+            
+        }
+        
+        mensagem += `Você tem ${listaProduto.length} produtos no carrinho <br>
+
+                Total da compra: R$${somaCompra} <br>
+
+                Produto mais caro: ${produtoCaro} (R$${maiorPreco})`
+        
+        div_mensagem.innerHTML = mensagem
+    }
+</script>
