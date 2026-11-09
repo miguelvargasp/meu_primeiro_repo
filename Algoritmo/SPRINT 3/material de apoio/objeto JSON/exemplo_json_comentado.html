@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nome
+    <input type="text" id="ipt_nome">
+    Idade
+    <input type="text" id="ipt_idade">
+    curso
+    <input type="text" id="ipt_curso">
+    ra
+    <input type="text" id="ipt_ra">
+    <input type="text" id="ipt2_nome">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <div id="div_exibir"></div>
+</body>
+
+</html>
+<script>
+
+    // VETOR (array): lista ordenada de valores, criada com colchetes [].
+    // Começa vazio e fica FORA da função para não ser recriado a cada clique;
+    // assim, os alunos cadastrados continuam guardados até a página ser recarregada.
+    let listaAlunos = []
+
+    function cadastrar() {
+        
+        // OBJETO: agrupa dados relacionados em pares chave: valor, criado com chaves {}.
+        // Como está DENTRO da função, um novo objeto é criado a cada clique em "Cadastrar".
+        let aluno = {
+            // Cada linha é uma propriedade: a chave vem antes dos dois-pontos e o valor, depois.
+            nome: ipt_nome.value,
+            // As propriedades podem ter tipos diferentes: esta guarda um número; as outras, texto.
+            idade: Number(ipt_idade.value),
+            curso: ipt_curso.value,
+            ra: ipt_ra.value,
+            // OBJETO DENTRO DE OBJETO: o valor de "disciplina" é outro objeto.
+            // A chave "nome" pode se repetir aqui porque cada objeto tem as suas próprias chaves.
+            // Acesso encadeado com pontos: aluno.nome é o aluno; aluno.disciplina.nome é a disciplina.
+            disciplina: {
+                nome: "Algoritmos",
+                sprint: "3",
+                nota: 10
+            },
+            // VETOR DE OBJETOS: o valor de "professores" é um vetor, e cada posição guarda um objeto.
+            // Acesso: primeiro o índice entre [], depois a propriedade com ponto.
+            professores: [
+                {
+                    nome: "Fernando" // posição 0: aluno.professores[0].nome
+                },
+                {
+                    nome: "JP" // posição 1: aluno.professores[1].nome
+                }
+            ]
+        }
+
+        // Outro OBJETO, independente de aluno: tem suas próprias propriedades.
+        let professor = {
+            nome: "Fernando",
+            disciplina: "Algoritmos"
+        }
+
+        // ADICIONANDO UM NOVO VALOR NO ALUNO  
+
+        // A chave "email" ainda não existe no objeto, então esta atribuição a cria.
+        aluno.email = "fernando@gmail.com"
+
+
+        // MODIFICANDO UM VALOR JÁ EXISTENTE
+
+        // A chave "nome" já existe, então esta atribuição substitui o valor anterior.
+        aluno.nome = ipt2_nome.value
+
+
+        // LENDO O OBJETO: usa-se objeto.chave para ler cada valor (ex.: aluno.nome).
+        // Em aluno.disciplina.nota, entra-se em aluno, depois em disciplina, e lê-se a nota.
+        div_exibir.innerHTML = `
+        Aluno: ${aluno.nome} <br>
+        Idade: ${aluno.idade} <br>
+        Curso: ${aluno.curso} <br>
+        Ra: ${aluno.ra}<br>
+        Email: ${aluno.email} <br>
+        
+        Disciplina do Aluno: ${aluno.disciplina.nome} - ${aluno.disciplina.nota} <br>
+
+
+        Professor: ${professor.nome} <br>    
+        Disciplina: ${professor.disciplina} <br>
+        `
+
+        // .push() adiciona um item ao FINAL do vetor. Aqui o item é o objeto aluno inteiro,
+        // portanto listaAlunos é um vetor de objetos.
+        listaAlunos.push(aluno)
+
+        // [0] pega a primeira posição do vetor (os índices começam em 0) e .nome lê a propriedade desse objeto.
+        // Como o índice é fixo, mostra sempre o primeiro aluno cadastrado, mesmo após novos cadastros.
+        console.log(listaAlunos[0].nome)
+
+
+    }
+
+
+
+
+</script>
