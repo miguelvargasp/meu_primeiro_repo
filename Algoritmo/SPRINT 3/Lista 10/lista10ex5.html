@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Cadastro de Alunos com Situação Escolar</h2>
+    Informe o nome do aluno: <br>
+    <input type="text" id="ipt_nome"> <br>
+    Informe o nota: <br>
+    <input type="text" id="ipt_nota"> <br>
+    Informe o frequência: <br>
+    <input type="text" id="ipt_freq"> <br>
+    <button onclick="analisar()">Analisar aluno</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function analisar(){
+        let aluno = {
+            nome : ipt_nome.value,
+            nota : Number(ipt_nota.value),
+            freq : Number(ipt_freq.value)
+        }
+        
+        if(aluno.nota >= 6 && aluno.freq >= 75){
+            aluno.situacao = "Aprovado"
+        }
+        else{
+            aluno.situacao = "Reprovado"
+        }
+
+        let mensagem = `Aluno: ${aluno.nome} <br>
+                        Nota: ${aluno.nota.toFixed(2)} <br>
+                        Frequência: ${aluno.freq.toFixed(2)} <br>
+                        Situação: ${aluno.situacao} `
+
+        div_mensagem.innerHTML = mensagem
+        console.log(aluno)
+    }
+</script>
