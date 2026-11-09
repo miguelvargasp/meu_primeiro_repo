@@ -55,38 +55,6 @@
             Cléber: ${votosCleber} votos <br>
             Adalberto: ${votosAdalberto} votos <br><br>`
 
-        let maiorVoto = votosMariana;
-        let vencedor = "Mariana";
-
-        if (votosCleber > maiorVoto) {
-            maiorVoto = votosCleber;
-            vencedor = "Cléber";
-        }
-
-        if (votosAdalberto > maiorVoto) {
-            maiorVoto = votosAdalberto;
-            vencedor = "Adalberto";
-        }
-
-        let quantosComMaior = 0;
-
-        if (votosMariana == maiorVoto) {
-            quantosComMaior++;
-        }
-        if (votosCleber == maiorVoto) {
-            quantosComMaior++;
-        }
-        if (votosAdalberto == maiorVoto) {
-            quantosComMaior++;
-        }
-
-        if (total == 0) {
-            mensagem += `Nenhum voto registrado`
-        } else if (quantosComMaior > 1) {
-            mensagem += `Houve empate!`
-        } else {
-            mensagem += `O(A) vencedor(a) é ${vencedor}!`
-        }
 
         div_mensagem.innerHTML = mensagem
     }
