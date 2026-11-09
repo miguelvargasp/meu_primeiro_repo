@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Cadastro de Funcionários com Alteração de Dados</h2>
+    Informe o nome do funcionário: <br>
+    <input type="text" id="ipt_nome"><br>
+    Informe o cargo: <br>
+    <input type="text" id="ipt_cargo"><br>
+    Informe o salário: <br>
+    <input type="text" id="ipt_salario"><br>
+    <button onclick="cadastrar()">Cadastrar Funcionario</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function cadastrar(){
+        let funcionario = {
+            nome :ipt_nome.value,
+            cargo :ipt_cargo.value,
+            salario : Number(ipt_salario.value) 
+
+        }
+        let bonus = funcionario.salario * 0.10
+        let mensagem = `Funcionário: ${funcionario.nome} <br>
+                        Cargo: ${funcionario.cargo} <br>
+                        Salário: R$${funcionario.salario.toFixed(2)} <br>
+                        Bônus: R$${bonus.toFixed(2)}`;
+
+        div_mensagem.innerHTML = mensagem
+
+        console.log(funcionario)
+
+
+    }
+</script>

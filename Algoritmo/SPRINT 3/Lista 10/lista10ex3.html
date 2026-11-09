@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Cadastro de Funcionários com Alteração de Dados</h2>
+    Informe o nome do produto: <br>
+    <input type="text" id="ipt_nome"> <br>
+    Informe o quantidade em estoque: <br>
+    <input type="text" id="ipt_estoque"> <br>
+    Informe o preco: <br>
+    <input type="text" id="ipt_preco"> <br>
+    <button onclick="cadastrar()">Cadastrar Produto</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function cadastrar(){
+        let produto = {
+            nome : ipt_nome.value,
+            estoque : Number(ipt_estoque.value),
+            preco : Number(ipt_preco.value)
+        }
+        produto.estoque = produto.estoque + 10;
+        produto.valorTotal = produto.estoque * produto.preco;
+
+        let mensagem = `Produto: ${produto.nome} <br>
+                        Quantidade Atualizada: ${produto.estoque} <br>
+                        Preço Unitário: R$${produto.preco.toFixed(2)} <br>
+                        Valor Total: R$${produto.valorTotal.toFixed(2)}`
+
+        div_mensagem.innerHTML = mensagem
+        console.log(produto)
+    }
+</script>
