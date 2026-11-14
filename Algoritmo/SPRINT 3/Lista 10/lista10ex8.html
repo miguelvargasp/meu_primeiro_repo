@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Cadastro de Comprador e Produto</h2>
+    Informe o nome do comprador: <br>
+    <input type="text" id="ipt_nome_comprador"> <br>
+    Informe o e-mail do comprador: <br>
+    <input type="text" id="ipt_email"> <br>
+    Informe o nome do produto: <br>
+    <input type="text" id="ipt_nome_produto"> <br>
+    Informe o valor do produto: <br>
+    <input type="text" id="ipt_valor"> <br>
+    <button onclick="finalizar()">Finalizar Compra</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function finalizar(){
+        let comprador = {
+            nome : ipt_nome_comprador.value,
+            email : ipt_email.value
+        }
+
+        let produto = {
+            nome : ipt_nome_produto.value,
+            valor : Number(ipt_valor.value)
+        }
+
+        let mensagem = '';
+
+        mensagem = `Comprador: ${comprador.nome} | ${comprador.email} <br>
+                Produto: ${produto.nome} <br>
+                Valor: R$${produto.valor}`
+
+        div_mensagem.innerHTML = mensagem
+
+        console.log(comprador)
+        console.log(produto)
+
+    }
+</script>

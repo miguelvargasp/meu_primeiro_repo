@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Os Celtas – Catálogo de Armas</h2>
+
+    Informe o Nome da arma: <br>
+    <input type="text" id="ipt_nomearma"> <br>
+    Informe o Tipo da arma (Corte, Blindagem, Projéteis e Cerco): <br>
+    <input type="text" id="ipt_tipoarma"> <br>
+    Informe a Quantidade de Pontos Necessários:<br>
+    <input type="text" id="ipt_qtdpontos"> <br>
+    <button onclick="receber()">Receber arma</button>
+    <button onclick="listar()">Listar Armas</button>
+    <button onclick="listarTipo()">Listar Por Tipo</button>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+<script>
+    let listaNome = [];
+    let listaTipo = [];
+    let listaPontos = [];
+
+    function receber(){ // PARTE 1 Registro de armas
+        let nomearma = ipt_nomearma.value ;  
+        let tipoarma = ipt_tipoarma.value ;
+        let qtdpontos = Number(ipt_qtdpontos.value) ;
+        
+        
+        if(listaNome.includes(nomearma)){
+            alert('Não pode cadastrar mais de uma arma com o mesmo nome')
+        } else if (tipoarma != "Corte" && tipoarma != "Blindagem" && tipoarma != "Projéteis" && tipoarma != "Cerco")
+        {
+            alert('Insira um tipo de arma válido')
+        } else if (qtdpontos < 0){
+            alert('Insira uma quantidade de pontos válida')
+        } else{
+            // PARTES 2 e 3
+            // let novosPontos = Number(prompt('Nova pontuação para esta arma')) 
+            // let acrescTipo = Number(prompt('porcentagem de acrescimo para este tipo de arma')) 
+            // let qtdPontosnova = novosPontos + (novosPontos / 100) * acresctipo 
+            listaNome.push(nomearma)
+            listaTipo.push(tipoarma)
+            listaPontos.push(qtdpontos) // listaPontos.push(acresctipo) 
+ 
+            
+        }
+    }
+
+    function listar(){ // PARTE 4 Listagem em ordem inversa das armas
+        let mensagem = '';
+
+        for(let i = listaNome.length - 1; i >= 0; i--){
+            let nomeAtual = listaNome[i];
+            let tipoAtual = listaTipo[i];
+            let pontosAtual = listaPontos[i];
+
+            mensagem += `${i+1}. - Nome: ${nomeAtual} - Tipo: ${tipoAtual} - ${pontosAtual} pts <br>`
+        }
+        
+        div_mensagem.innerHTML  = mensagem
+        
+
+    }
+
+    function listarTipo(){ // PARTE 5 Lista em em ordem inversa das armas conforme o tipo(não consegui realizar), mostrando no final a maior e menor quantidade de pontos necessários
+        let mensagem = '';
+        let total = listaNome.length;
+        let maiorPontos = listaPontos[0];
+        let menorPontos = listaPontos[0];
+
+        for(let i = listaNome.length - 1; i >= 0; i--){
+            let nomeAtual = listaNome[i];
+            let tipoAtual = listaTipo[i];
+            let pontosAtual = listaPontos[i];
+
+            mensagem += `${i+1}. - Nome: ${nomeAtual} - Tipo: ${tipoAtual} - ${pontosAtual} pts <br>`
+
+            if(pontosAtual > maiorPontos){
+                maiorPontos = pontosAtual
+            }
+            
+            if(pontosAtual < menorPontos){
+                menorPontos = pontosAtual
+            }
+        }
+            mensagem += `Maior pontos necessários: ${maiorPontos} pts<br>
+                        Menor pontos necessários: ${menorPontos} pts`
+        
+        div_mensagem.innerHTML  = mensagem
+    }
+
+    
+</script>
