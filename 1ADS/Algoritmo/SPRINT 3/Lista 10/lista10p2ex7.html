@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Biblioteca de Jogos de Tabuleiro</h2>
+    Informe o nome do jogo de tabuleiro: <br>
+    <input type="text" id="ipt_nome"> <br>
+    Informe a quantidade de jogadores: <br>
+    <input type="text" id="ipt_jogadores"> <br>
+    <button onclick="cadastrar()">Cadastrar Jogo</button>
+    <button onclick="listar()">Listar Jogos</button> <br><br>
+
+    Informe a quantidade de jogadores: <br>
+    <input type="text" id="ipt_filtro"> <br>
+    <button onclick="filtrar()">Filtrar por Jogadores</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let listaJogos = [];
+
+    function cadastrar(){
+        let jogo = {
+            nome : ipt_nome.value,
+            jogadores : Number(ipt_jogadores.value)
+        }
+
+        listaJogos.push(jogo);
+
+        div_mensagem.innerHTML = `Jogo ${jogo.nome} cadastrado!`
+    }
+
+    function listar(){
+        let mensagem = '';
+
+        for(let i = 0; i < listaJogos.length; i++){
+            let jogoAtual = listaJogos[i];
+            mensagem += `${i+1}. ${jogoAtual.nome} - ${jogoAtual.jogadores} jogadores<br>`
+        }
+
+        mensagem += `<br>Total de jogos cadastrados: ${listaJogos.length}`
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+    function filtrar(){
+        let quantidade = Number(ipt_filtro.value);
+        let mensagem = '';
+
+        for(let i = 0; i < listaJogos.length; i++){
+            let jogoAtual = listaJogos[i];
+
+            if (jogoAtual.jogadores == quantidade) {
+                mensagem += `${jogoAtual.nome} - ${jogoAtual.jogadores} jogadores<br>`
+            }
+        }
+
+        if (mensagem == '') {
+            mensagem = `Nenhum jogo encontrado para essa quantidade de jogadores`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

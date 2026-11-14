@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Registro de Produtos</h2>
+    Informe o nome do produto: <br>
+    <input type="text" id="ipt_nome"> <br>
+    Informe o preço: <br>
+    <input type="text" id="ipt_preco"> <br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="atualizarEstoque()">Atualizar Estoque</button> <br><br>
+
+    <select id="slt_filtro">
+        <option value="acima">Preços acima de</option>
+        <option value="abaixo">Preços abaixo de</option>
+    </select> <br>
+    Valor: <br>
+    <input type="text" id="ipt_valor"> <br>
+    <button onclick="filtrarProdutos()">Filtrar Produtos</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let listaProdutos = [];
+
+    function cadastrar(){
+        let nome = ipt_nome.value;
+        let preco = Number(ipt_preco.value);
+        let mensagem = '';
+
+        if (preco > 0 && nome.length >= 3) {
+            let produto = {
+                nome : nome,
+                preco : preco
+            }
+
+            listaProdutos.push(produto);
+            mensagem = `Produto ${nome} cadastrado com sucesso!`
+        } else {
+            mensagem = `Informe um preço positivo e um nome com ao menos 3 letras`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+    function atualizarEstoque(){
+        let mensagem = `Você tem ${listaProdutos.length} produtos cadastrados em estoque:<br>`
+        let somaEstoque = 0;
+
+        for(let i = 0; i < listaProdutos.length; i++){
+            let produtoAtual = listaProdutos[i];
+            mensagem += `${i+1}. ${produtoAtual.nome} - R$${produtoAtual.preco}<br>`
+
+            somaEstoque += produtoAtual.preco;
+        }
+
+        mensagem += `Seu estoque vale R$${somaEstoque}`
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+    function filtrarProdutos(){
+        let opcao = slt_filtro.value;
+        let valor = Number(ipt_valor.value);
+        let mensagem = '';
+
+        for(let i = 0; i < listaProdutos.length; i++){
+            let produtoAtual = listaProdutos[i];
+
+            if (opcao == "acima" && produtoAtual.preco > valor) {
+                mensagem += `${produtoAtual.nome} - R$${produtoAtual.preco}<br>`
+            } else if (opcao == "abaixo" && produtoAtual.preco < valor) {
+                mensagem += `${produtoAtual.nome} - R$${produtoAtual.preco}<br>`
+            }
+        }
+
+        if (mensagem == '') {
+            mensagem = `Nenhum produto encontrado`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

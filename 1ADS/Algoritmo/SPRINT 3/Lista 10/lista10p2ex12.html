@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Catálogo de Filmes</h2>
+    Informe o nome do filme: <br>
+    <input type="text" id="ipt_nome"> <br>
+    Informe o gênero: <br>
+    <input type="text" id="ipt_genero"> <br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="listar()">Listar Filmes</button> <br><br>
+
+    Filtrar do filme: <br>
+    <input type="text" id="ipt_inicio"> <br>
+    Até o filme: <br>
+    <input type="text" id="ipt_fim"> <br>
+    <button onclick="filtrarRegistro()">Filtrar Filmes por Registro</button> <br><br>
+
+    Informe o gênero para filtrar: <br>
+    <input type="text" id="ipt_filtro_genero"> <br>
+    <button onclick="filtrarGenero()">Filtrar Filmes por Gênero</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let listaFilmes = [];
+
+    function cadastrar(){
+        let filme = {
+            nome : ipt_nome.value,
+            genero : ipt_genero.value
+        }
+
+        listaFilmes.push(filme);
+
+        div_mensagem.innerHTML = `Você já assistiu ${listaFilmes.length} filmes`
+    }
+
+    function listar(){
+        let mensagem = '';
+
+        for(let i = listaFilmes.length - 1; i >= 0; i--){
+            let filmeAtual = listaFilmes[i];
+            mensagem += `${i+1}. ${filmeAtual.nome} - ${filmeAtual.genero}<br>`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+    function filtrarRegistro(){
+        let inicio = Number(ipt_inicio.value);
+        let fim = Number(ipt_fim.value);
+        let mensagem = '';
+
+        if (inicio < 1 || inicio > fim || fim > listaFilmes.length) {
+            alert('Insira valores corretos')
+        } else {
+            for(let i = fim - 1; i >= inicio - 1; i--){
+                let filmeAtual = listaFilmes[i];
+                mensagem += `${i+1}. ${filmeAtual.nome} - ${filmeAtual.genero}<br>`
+            }
+
+            div_mensagem.innerHTML = mensagem
+        }
+    }
+
+    function filtrarGenero(){
+        let genero = ipt_filtro_genero.value;
+        let mensagem = '';
+
+        for(let i = 0; i < listaFilmes.length; i++){
+            let filmeAtual = listaFilmes[i];
+
+            if (filmeAtual.genero == genero) {
+                mensagem += `${i+1}. ${filmeAtual.nome} - ${filmeAtual.genero}<br>`
+            }
+        }
+
+        if (mensagem == '') {
+            mensagem = `Nenhum filme encontrado nesse gênero`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Registro de Alimentos</h2>
+    Informe o nome do alimento: <br>
+    <input type="text" id="ipt_nome"> <br>
+    Informe a quantidade: <br>
+    <input type="text" id="ipt_quantidade"> <br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="atualizarLista()">Atualizar Lista</button> <br><br>
+
+    <select id="slt_filtro">
+        <option value="maior">Quantidade maior que</option>
+        <option value="menor">Quantidade menor que</option>
+    </select> <br>
+    Informe uma quantidade: <br>
+    <input type="text" id="ipt_filtro"> <br>
+    <button onclick="filtrarAlimentos()">Filtrar Alimentos</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let listaAlimentos = [];
+
+    function cadastrar(){
+        let nome = ipt_nome.value;
+        let quantidade = Number(ipt_quantidade.value);
+        let mensagem = '';
+
+        if (nome.length >= 3 && quantidade > 0) {
+            let alimento = {
+                nome : nome,
+                quantidade : quantidade
+            }
+
+            listaAlimentos.push(alimento);
+            mensagem = `Alimento ${nome} cadastrado com sucesso!`
+        } else {
+            mensagem = `Informe um nome com ao menos 3 letras e uma quantidade maior que zero`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+    function atualizarLista(){
+        let mensagem = `Você tem ${listaAlimentos.length} alimentos cadastrados:<br>`
+
+        for(let i = 0; i < listaAlimentos.length; i++){
+            let alimentoAtual = listaAlimentos[i];
+            mensagem += `${alimentoAtual.nome} - ${alimentoAtual.quantidade} unidades<br>`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+    function filtrarAlimentos(){
+        let opcao = slt_filtro.value;
+        let valor = Number(ipt_filtro.value);
+        let mensagem = '';
+
+        for(let i = 0; i < listaAlimentos.length; i++){
+            let alimentoAtual = listaAlimentos[i];
+
+            if (opcao == "maior" && alimentoAtual.quantidade > valor) {
+                mensagem += `${alimentoAtual.nome} - ${alimentoAtual.quantidade} unidades<br>`
+            } else if (opcao == "menor" && alimentoAtual.quantidade < valor) {
+                mensagem += `${alimentoAtual.nome} - ${alimentoAtual.quantidade} unidades<br>`
+            }
+        }
+
+        if (mensagem == '') {
+            mensagem = `Nenhum alimento encontrado`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

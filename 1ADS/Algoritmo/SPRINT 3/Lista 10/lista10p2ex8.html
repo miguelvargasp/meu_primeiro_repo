@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Registro de Despesas Mensais</h2>
+    Informe o nome da despesa: <br>
+    <input type="text" id="ipt_nome"> <br>
+    Informe o valor gasto: <br>
+    <input type="text" id="ipt_valor"> <br>
+    <button onclick="cadastrar()">Cadastrar Despesa</button>
+    <button onclick="resumo()">Resumo das Despesas</button> <br><br>
+
+    <select id="slt_filtro">
+        <option value="acima">Despesas acima de</option>
+        <option value="abaixo">Despesas abaixo de</option>
+    </select> <br>
+    Informe um valor: <br>
+    <input type="text" id="ipt_filtro"> <br>
+    <button onclick="filtrar()">Filtrar Despesas</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let listaDespesas = [];
+
+    function cadastrar(){
+        let despesa = {
+            nome : ipt_nome.value,
+            valor : Number(ipt_valor.value)
+        }
+        let mensagem = '';
+
+        if (despesa.valor > 0) {
+            listaDespesas.push(despesa);
+            mensagem = `Despesa ${despesa.nome} cadastrada!`
+        } else {
+            mensagem = `Informe um valor positivo`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+    function resumo(){
+        let mensagem = `Você tem ${listaDespesas.length} despesas cadastradas:<br>`
+        let somaDespesas = 0;
+
+        for(let i = 0; i < listaDespesas.length; i++){
+            let despesaAtual = listaDespesas[i];
+            mensagem += `${despesaAtual.nome} - R$ ${despesaAtual.valor}<br>`
+
+            somaDespesas += despesaAtual.valor;
+        }
+
+        mensagem += `Total gasto: R$ ${somaDespesas}`
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+    function filtrar(){
+        let opcao = slt_filtro.value;
+        let valor = Number(ipt_filtro.value);
+        let mensagem = '';
+
+        for(let i = 0; i < listaDespesas.length; i++){
+            let despesaAtual = listaDespesas[i];
+
+            if (opcao == "acima" && despesaAtual.valor > valor) {
+                mensagem += `${despesaAtual.nome} - R$ ${despesaAtual.valor}<br>`
+            } else if (opcao == "abaixo" && despesaAtual.valor < valor) {
+                mensagem += `${despesaAtual.nome} - R$ ${despesaAtual.valor}<br>`
+            }
+        }
+
+        if (mensagem == '') {
+            mensagem = `Nenhuma despesa encontrada`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Catálogo de Jogos</h2>
+    Informe o nome do jogo: <br>
+    <input type="text" id="ipt_jogo"> <br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="listar()">Listar Jogos</button> <br><br>
+
+    Filtrar do jogo: <br>
+    <input type="text" id="ipt_inicio"> <br>
+    Até o jogo: <br>
+    <input type="text" id="ipt_fim"> <br>
+    <button onclick="filtrar()">Filtrar Jogos</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let listaJogos = [];
+
+    function cadastrar(){
+        let jogo = ipt_jogo.value;
+
+        listaJogos.push(jogo);
+
+        div_mensagem.innerHTML = `Você já cadastrou ${listaJogos.length} jogos`
+    }
+
+    function listar(){
+        let mensagem = '';
+
+        for(let i = listaJogos.length - 1; i >= 0; i--){
+            let jogoAtual = listaJogos[i];
+            mensagem += `${i+1}. ${jogoAtual}<br>`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+    function filtrar(){
+        let inicio = Number(ipt_inicio.value);
+        let fim = Number(ipt_fim.value);
+        let mensagem = '';
+
+        if (inicio < 1 || inicio > fim || fim > listaJogos.length) {
+            alert('Insira valores corretos')
+        } else {
+            for(let i = fim - 1; i >= inicio - 1; i--){
+                let jogoAtual = listaJogos[i];
+                mensagem += `${i+1}. ${jogoAtual}<br>`
+            }
+
+            div_mensagem.innerHTML = mensagem
+        }
+    }
+</script>

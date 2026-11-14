@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Catálogo de Cursos</h2>
+    Informe o nome do curso: <br>
+    <input type="text" id="ipt_curso"> <br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="exibir()">Exibir Cursos</button> <br><br>
+
+    De...: <br>
+    <input type="text" id="ipt_inicio"> <br>
+    Até...: <br>
+    <input type="text" id="ipt_fim"> <br>
+    <button onclick="filtrar()">Filtrar Cursos</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let listaCursos = [];
+
+    function cadastrar(){
+        let curso = ipt_curso.value;
+
+        listaCursos.push(curso);
+
+        div_mensagem.innerHTML = `Curso ${curso} cadastrado!`
+    }
+
+    function exibir(){
+        let mensagem = '';
+
+        for(let i = 0; i < listaCursos.length; i++){
+            let cursoAtual = listaCursos[i];
+            mensagem += `${i+1}. ${cursoAtual}<br>`
+        }
+
+        mensagem += `<br>Total de cursos cadastrados: ${listaCursos.length}`
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+    function filtrar(){
+        let inicio = Number(ipt_inicio.value);
+        let fim = Number(ipt_fim.value);
+        let mensagem = '';
+
+        if (inicio < 1 || inicio > fim || fim > listaCursos.length) {
+            alert('Insira valores corretos')
+        } else {
+            for(let i = inicio - 1; i < fim; i++){
+                let cursoAtual = listaCursos[i];
+                mensagem += `${i+1}. ${cursoAtual}<br>`
+            }
+
+            mensagem += `<br>Total de cursos cadastrados: ${listaCursos.length}`
+
+            div_mensagem.innerHTML = mensagem
+        }
+    }
+</script>

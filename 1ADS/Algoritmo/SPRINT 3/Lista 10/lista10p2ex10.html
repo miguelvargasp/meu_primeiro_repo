@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Cadastro de Animais de Estimação</h2>
+    Informe o nome do animal: <br>
+    <input type="text" id="ipt_nome"> <br>
+    Informe a espécie: <br>
+    <input type="text" id="ipt_especie"> <br>
+    <button onclick="cadastrar()">Cadastrar Animal</button>
+    <button onclick="listar()">Listar Animais</button> <br><br>
+
+    Informe a espécie para filtrar: <br>
+    <input type="text" id="ipt_filtro"> <br>
+    <button onclick="filtrar()">Filtrar Animais</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let listaAnimais = [];
+
+    function cadastrar(){
+        let animal = {
+            nome : ipt_nome.value,
+            especie : ipt_especie.value
+        }
+
+        listaAnimais.push(animal);
+
+        div_mensagem.innerHTML = `Animal ${animal.nome} cadastrado!`
+    }
+
+    function listar(){
+        let mensagem = '';
+
+        for(let i = 0; i < listaAnimais.length; i++){
+            let animalAtual = listaAnimais[i];
+            mensagem += `${i+1}. ${animalAtual.nome} - ${animalAtual.especie}<br>`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+    function filtrar(){
+        let especie = ipt_filtro.value;
+        let mensagem = '';
+
+        for(let i = 0; i < listaAnimais.length; i++){
+            let animalAtual = listaAnimais[i];
+
+            if (animalAtual.especie == especie) {
+                mensagem += `${animalAtual.nome} - ${animalAtual.especie}<br>`
+            }
+        }
+
+        if (mensagem == '') {
+            mensagem = `Nenhum animal dessa espécie foi encontrado`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

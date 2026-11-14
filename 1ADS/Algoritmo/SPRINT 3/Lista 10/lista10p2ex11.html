@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Agenda de Eventos</h2>
+    Informe o nome do evento: <br>
+    <input type="text" id="ipt_nome"> <br>
+    Informe a data: <br>
+    <input type="text" id="ipt_data"> <br>
+    Informe o local: <br>
+    <input type="text" id="ipt_local"> <br>
+    <button onclick="cadastrar()">Cadastrar Evento</button>
+    <button onclick="exibir()">Exibir Agenda</button> <br><br>
+
+    De...: <br>
+    <input type="text" id="ipt_inicio"> <br>
+    Até...: <br>
+    <input type="text" id="ipt_fim"> <br>
+    <button onclick="filtrar()">Filtrar Agenda</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let listaEventos = [];
+
+    function cadastrar(){
+        let evento = {
+            nome : ipt_nome.value,
+            data : ipt_data.value,
+            local : ipt_local.value
+        }
+
+        listaEventos.push(evento);
+
+        div_mensagem.innerHTML = `Evento ${evento.nome} cadastrado!`
+    }
+
+    function exibir(){
+        let mensagem = '';
+
+        for(let i = 0; i < listaEventos.length; i++){
+            let eventoAtual = listaEventos[i];
+            mensagem += `${i+1}. ${eventoAtual.nome} - ${eventoAtual.data} - ${eventoAtual.local}<br>`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+    function filtrar(){
+        let inicio = Number(ipt_inicio.value);
+        let fim = Number(ipt_fim.value);
+        let mensagem = '';
+
+        if (inicio < 1 || inicio > fim || fim > listaEventos.length) {
+            alert('Insira valores corretos')
+        } else {
+            for(let i = inicio - 1; i < fim; i++){
+                let eventoAtual = listaEventos[i];
+                mensagem += `${i+1}. ${eventoAtual.nome} - ${eventoAtual.data} - ${eventoAtual.local}<br>`
+            }
+
+            div_mensagem.innerHTML = mensagem
+        }
+    }
+</script>

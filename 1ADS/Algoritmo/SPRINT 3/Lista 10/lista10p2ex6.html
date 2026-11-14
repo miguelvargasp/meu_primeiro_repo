@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Controle de Contatos</h2>
+    Informe o nome do contato: <br>
+    <input type="text" id="ipt_nome"> <br>
+    Informe o telefone: <br>
+    <input type="text" id="ipt_telefone"> <br>
+    <button onclick="cadastrar()">Cadastrar Contato</button>
+    <button onclick="exibir()">Exibir Contatos</button> <br><br>
+
+    De...: <br>
+    <input type="text" id="ipt_inicio"> <br>
+    Até...: <br>
+    <input type="text" id="ipt_fim"> <br>
+    <button onclick="filtrar()">Filtrar Contatos</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let listaContatos = [];
+
+    function cadastrar(){
+        let contato = {
+            nome : ipt_nome.value,
+            telefone : ipt_telefone.value
+        }
+
+        listaContatos.push(contato);
+
+        div_mensagem.innerHTML = `Contato ${contato.nome} cadastrado!`
+    }
+
+    function exibir(){
+        let mensagem = '';
+
+        for(let i = 0; i < listaContatos.length; i++){
+            let contatoAtual = listaContatos[i];
+            mensagem += `${i+1}. ${contatoAtual.nome} - ${contatoAtual.telefone}<br>`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+    function filtrar(){
+        let inicio = Number(ipt_inicio.value);
+        let fim = Number(ipt_fim.value);
+        let mensagem = '';
+
+        if (inicio < 1 || inicio > fim || fim > listaContatos.length) {
+            alert('Insira valores corretos')
+        } else {
+            for(let i = inicio - 1; i < fim; i++){
+                let contatoAtual = listaContatos[i];
+                mensagem += `${i+1}. ${contatoAtual.nome} - ${contatoAtual.telefone}<br>`
+            }
+
+            div_mensagem.innerHTML = mensagem
+        }
+    }
+</script>

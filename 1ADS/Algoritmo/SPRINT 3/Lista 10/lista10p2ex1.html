@@ -11,15 +11,50 @@
     Informe o nome das músicas que mais gosta (uma por vez) <br>
     <input type="text" id="ipt_musica"> <br>
     <button onclick="cadastrar()">Cadastrar</button>
-    <div id="div-mensagem"></div>
+    <button onclick="exibir()">Exibir</button> <br>
+    De...: 
+    <input type="text" id="ipt_deinicio"> <br>
+    Até...:
+    <input type="text" id="ipt_atefim"> <br>
+    <button onclick="filtrar()">Filtrar</button>
+    <div id="div_mensagem"></div>
 </body>
 </html>
 <script>
-    
+    let listaMusicas = [];
     function cadastrar(){
         let musica = ipt_musica.value;
+        
+        
+        listaMusicas.push(musica)
+    }
+
+    function exibir(){
         let mensagem = '';
         
-        for(i = 0; i < musica.length)
+        for(i = 0; i < listaMusicas.length; i++){
+            let musicaAtual = listaMusicas[i];
+            mensagem += `${i+1}. ${musicaAtual}<br>`
+        }
+        div_mensagem.innerHTML = mensagem;
     }
+
+    function filtrar(){
+        let deinicio = Number(ipt_deinicio.value); 
+        let atefim = Number(ipt_atefim.value);
+        let mensagem = '';
+
+        if(deinicio >= atefim){
+            alert('Insira valores corretos')
+        } else{
+            for(i = deinicio; i <= atefim; i++){
+                let musicaAtual = listaMusicas[i - 1];
+                mensagem += `${i}. ${musicaAtual}<br>`
+            }
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+
 </script>
