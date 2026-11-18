@@ -103,3 +103,16 @@ VALUES
 (1, '2026-09-10', 5, 8);
 
 
+SELECT ROUND(SUM(p.qtd_produtos * pr.preco), 2) AS faturamento_total
+	FROM pedidos AS p
+	INNER JOIN produtos pr ON pr.id = p.fk_produto;
+    
+
+SELECT ROUND(AVG(total_dia), 2) AS media_vendas_dia
+FROM (
+    SELECT p.dt_pedido,
+           SUM(p.qtd_produtos * pr.preco) AS total_dia
+		FROM pedidos AS p
+		INNER JOIN produtos pr ON pr.id = p.fk_produto
+			GROUP BY p.dt_pedido
+) AS vendas_dia;
